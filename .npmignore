@@ -1,0 +1,10 @@
+.gitignore
+.npmignore
+
+src/
+test/
+vendor/
+
+.eslintrc
+gulpfile.js
+
