@@ -1,9 +1,9 @@
-events
-query
-style
-class
-util
-transition
+/events
+/query
+/style
+/class
+/util
+/transition
 
 # Logs
 logs
