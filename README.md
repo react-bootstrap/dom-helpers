@@ -47,7 +47,7 @@ Each level of the module can be required as a whole or you can drill down for a 
         + `width(element, useClientWidth)`
         + `offset(element)` -> `{ top: Number, left: Number, top: height, width: Number}`
         + `scrollTop(element, [value])`
-        + `scrollparent(element)`
+        + `scrollParent(element)`
     - class
         - `addClass(element, className)`
         - `removeClass(element, className)`
@@ -56,6 +56,7 @@ Each level of the module can be required as a whole or you can drill down for a 
         + `removeStyle(element, styleName)`
         + `getComputedStyle(element)` -> `getPropertyvalue(name)`
     - transition
+        + `end(node, handler, [duration])` listens for transition end, and ensures that the handler if called even if the transition fails to fire its end event. Will attempt to read duration from the element, otherwise one can be provided
         + `properties`: Object containing the various vendor specifc transition and transform properties for your browser 
         ```js
            {
@@ -72,4 +73,4 @@ Each level of the module can be required as a whole or you can drill down for a 
         + `off(eventname, handler, [capture])`: capture is silently ignored in ie8
     - `util` 
         + `requestAnimationFrame`
-        + `scroll`
+        + `scrollTo`

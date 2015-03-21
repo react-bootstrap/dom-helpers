@@ -6,17 +6,17 @@ var gulp    = require('gulp')
   , babelTransform = require('gulp-babel-helpers');
 
 
-gulp.task('clean', function(cb){
-  rimraf('./lib', cb);
-})
+// gulp.task('clean', function(cb){
+//   rimraf('{query|events}', cb);
+// })
 
-gulp.task('build', ['clean'], function(){
+gulp.task('build', function(){
 
   return gulp.src('./src/**/*.js')
       .pipe(plumber())
       .pipe(babelTransform(
           babel
         , './util/babelHelpers.js'
-        , './lib/util/babelHelpers.js'))
-      .pipe(gulp.dest('./lib'));
+        , './util/babelHelpers.js'))
+      .pipe(gulp.dest('.'));
 })

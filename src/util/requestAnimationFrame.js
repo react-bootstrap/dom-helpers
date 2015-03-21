@@ -1,7 +1,8 @@
 'use strict';
 
-var canUseDOM = require('react/lib/ExecutionEnvironment').canUseDOM
-  , cancel = 'clearTimeout'
+var canUseDOM = require('./inDOM')
+
+var cancel = 'clearTimeout'
   , raf    = fallback
   , compatRaf;
   
