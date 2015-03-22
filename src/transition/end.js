@@ -12,7 +12,7 @@ module.exports = function onEnd(node, handler, duration) {
     duration = 0
 
   else if ( duration == null )
-    duration = style(node, transition.duration) || 0
+    duration = parseDuration(node) || 0
 
   if (transition.end) {
     node.addEventListener(transition.end, done, false);
@@ -29,4 +29,13 @@ module.exports = function onEnd(node, handler, duration) {
     event.target.removeEventListener(transition.end, done);
     handler.call(this)
   }
+}
+
+module.exports._parseDuration = parseDuration
+
+function parseDuration(node){
+  var str = style(node, transition.duration)
+    , mult = str.indexOf('ms') === -1 ? 1000 : 1
+
+  return parseFloat(str) * mult
 }
