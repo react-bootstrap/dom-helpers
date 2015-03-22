@@ -1,5 +1,5 @@
 var canUseDOM = require('./inDOM');
-var style = require('./style')
+var style = require('../style')
 
 var size;
 
