@@ -2,6 +2,8 @@
 
 module.exports = {
 
+  matches: require('./matches'), 
+  
   height: require('./height'), 
 
   width: require('./width'), 
