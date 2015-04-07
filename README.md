@@ -29,15 +29,15 @@ The real advantage to this collection is that any method can be required individ
 Each level of the module can be required as a whole or you can drill down for a specific method or section:
 
 ```js
-    var helpers = require('dom-helper')
-    var query = require('dom-helper/query')
-    var offset = require('dom-helper/query/offset')
+    var helpers = require('dom-helpers')
+    var query = require('dom-helpers/query')
+    var offset = require('dom-helpers/query/offset')
 
     // style is a function
-    require('dom-helper/style')(node, { width: '40px' })
+    require('dom-helpers/style')(node, { width: '40px' })
 
     //and a namespace
-    var gcs = require('dom-helper/style/getComputedStyle')
+    var gcs = require('dom-helpers/style/getComputedStyle')
 ```
 
 - dom-helpers
