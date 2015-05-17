@@ -4,7 +4,7 @@ var getOffset = require('../query/offset')
   , getScrollParent = require('../query/scrollParent')
   , scrollTop = require('../query/scrollTop')
   , raf = require('./requestAnimationFrame')
-  , getWindow = require('./isWindow')
+  , getWindow = require('../query/isWindow')
 
 module.exports = function scrollTo( selected, scrollParent ) {
   var offset = getOffset(selected)
