@@ -1,6 +1,6 @@
 'use strict';
 var on = require('./on')
   , off = require('./off')
-  , filterHandler = require('./filterHandler')
+  , filter = require('./filter')
 
-module.exports = { on, off, filterHandler }
+module.exports = { on, off, filter }

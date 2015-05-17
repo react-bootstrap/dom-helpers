@@ -11,18 +11,18 @@ npm i -S dom-helpers
 
 Mostly just naive wrappers around common DOM API inconsitencies, Cross browser work is minimal and mostly taken from jQuery. This library doesn't do a lot to normalize behavior across browsers, it mostly seeks to provide a common interface, and elminate the need to write the same damn `if (ie8)` statements in every project.
 
-For example `events.on` works in all browsers ie8+ but it uses the native event system so actual event oddities will continue to exist. If you need __robust__ cross-browser support use jQuery. if you are just tired of rewriting:
+For example `events.on` works in all browsers ie8+ but it uses the native event system so actual event oddities will continue to exist. If you need __robust__ cross-browser support, use jQuery. If you are just tired of rewriting:
 
 ```js
 if (document.addEventListener)
-      return (node, eventName, handler, capture) => 
-          node.addEventListener(eventName, handler, capture || false);
+  return (node, eventName, handler, capture) => 
+    node.addEventListener(eventName, handler, capture || false);
 else if (document.attachEvent)
   return (node, eventName, handler) => 
       node.attachEvent('on' + eventName, handler);
 ```
 
-over and over again use this. Or you need a ok `getComputedStyle` polyfill but don't want to include all of jquery, use this.
+over and over again, or you need a ok `getComputedStyle` polyfill but don't want to include all of jquery, use this.
 
 The real advantage to this collection is that any method can be required individually, meaning tools like Browserify or Webpack will only include the exact methods you use. This is great for environments where jQuery doesn't make sense, such as `React` where you only occasionally need to do direct DOM manipulation.
 
@@ -42,9 +42,11 @@ Each level of the module can be required as a whole or you can drill down for a 
 
 - dom-helpers
     - query
+        + `querySelectorAll(element, selector)`: optimized qsa, uses `getElementBy{Id|TagName|ClassName}` if it can.
         + `contains(container, element)`
         + `height(element, useClientHeight)`
         + `width(element, useClientWidth)`
+        + `matches(element, selector)`: `matches()` polyfill that works in ie8
         + `offset(element)` -> `{ top: Number, left: Number, top: height, width: Number}`
         + `scrollTop(element, [value])`
         + `scrollParent(element)`
@@ -68,9 +70,11 @@ Each level of the module can be required as a whole or you can drill down for a 
             duration:  // transition-duration
            } 
         ```
-    - `events`
+    - events
         + `on(eventname, handler, [capture])`:  capture is silently ignored in ie8
         + `off(eventname, handler, [capture])`: capture is silently ignored in ie8
-    - `util` 
-        + `requestAnimationFrame`
-        + `scrollTo`
+        + `filter(selector, fn)`: returns a function handler that only fires when the target matches or is contained in the selector ex: `events.on(list, 'click', events.filter('li > a', handler))`
+    - util
+        + `requestAnimationFrame(cb)` returns an ID for canceling
+            * `requestAnimationFrame.cancel(id)`
+        + `scrollTo(element, [scrollParent])`

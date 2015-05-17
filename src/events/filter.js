@@ -1,14 +1,13 @@
 var contains = require('../query/contains')
+  , qsa = require('../query/querySelectorAll')
 
 module.exports = function(selector, handler) {
   return function(e){
     var top = e.currentTarget
       , target = e.target
-      , matches = top.querySelectorAll(selector);
+      , matches = qsa(top, selector);
 
-    if ([].some.call(matches, match => contains(match, target)))
+    if ( matches.some(match => contains(match, target)))
       handler.call(this, e)
   }
 }
-
-

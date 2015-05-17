@@ -38,8 +38,7 @@ module.exports = function (config) {
         loaders: [
           { 
             test:    /.js$/, 
-            loader:  'babel-loader', 
-            query:   require('./package.json').babel, 
+            loader:  'babel-loader',
             exclude: /node_modules/
           }
         ]

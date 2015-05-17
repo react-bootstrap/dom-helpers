@@ -1,3 +1,4 @@
+/*global expect sinon */
 var evt = require('../src/events')
   , simulant = require('simulant')
 
@@ -25,6 +26,23 @@ describe('Event helpers', () => {
     evt.off(el, 'click', handler)
 
     simulant.fire(el, 'click')
+  })
+
+  it('should filter handlers', () => {
+    var span = document.getElementsByTagName('span')[0]
+      , sibling = document.getElementById('item-3') 
+      , parent  = document.getElementById('item-1')
+      , filtered = sinon.spy()
+      , handler  = sinon.spy();
+
+    evt.on(parent, 'click', handler)
+    evt.on(parent, 'click', evt.filter('#item-2', filtered))
+    
+    simulant.fire(span, 'click')
+    simulant.fire(sibling, 'click')
+
+    expect(filtered.callCount).to.equal(1)
+    expect(handler.callCount).to.equal(2)
   })
   
 })

@@ -2,7 +2,8 @@
 //     Zepto.js
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
-var simpleSelectorRE = /^[\w-]*$/;
+var simpleSelectorRE = /^[\w-]*$/
+  , toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
 
 module.exports = function qsa(element, selector) {
   var maybeID    = selector[0] === '#'
@@ -12,14 +13,16 @@ module.exports = function qsa(element, selector) {
     , found;
 
   if ( isSimple ) {
-    if (element.getElementById && maybeID)
+    if ( maybeID ) {
+      element = element.getElementById ? element : document;
       return (found = element.getElementById(nameOnly)) ? [ found ] : []
+    }
 
     if ( element.getElementsByClassName && maybeClass)
-      return [].slice.call(element.getElementsByClassName(nameOnly))
+      return toArray(element.getElementsByClassName(nameOnly))
 
-    return [].slice.call(element.getElementsByTagName(selector))
+    return toArray(element.getElementsByTagName(selector))
   }
 
-  return [].slice.call(element.querySelectorAll(selector))
+  return toArray(element.querySelectorAll(selector))
 }

@@ -1,9 +1,4 @@
-/events
-/query
-/style
-/class
-/util
-/transition
+/lib
 
 # Logs
 logs

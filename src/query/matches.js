@@ -1,5 +1,6 @@
 'use strict';
 var canUseDOM = require('../util/inDOM')
+  , qsa = require('./querySelectorAll')
   , matches;
 
 if ( canUseDOM ) {
@@ -18,7 +19,7 @@ if ( canUseDOM ) {
 module.exports = matches
 
 function ie8MatchesSelector(node, selector) {
-  var matches = (node.document || node.ownerDocument).querySelectorAll(selector)
+  var matches = qsa(node.document || node.ownerDocument, selector)
     , i = 0;
   
   while (matches[i] && matches[i] !== node) i++;

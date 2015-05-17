@@ -1,9 +1,65 @@
+/*global expect sinon */
 var query = require('../src/query')
 
-
 describe('Query helpers', () => {
-
+  var qsa = query.querySelectorAll
   
+  describe('QuerySelectorAll', () => {
+
+    beforeEach(()=>{
+      document.body.innerHTML = window.__html__['test/fixtures/qsa.html']
+    })
+
+    it('should use GetElementByTagName', ()=> {
+      var spy = sinon.spy(document, 'getElementsByTagName')
+
+      expect(qsa(document, 'li').length).to.equal(3)
+      expect(spy.callCount).to.equal(1)
+
+      spy.restore()
+    })
+
+    it('should use GetElementById', ()=> {
+      var spy = sinon.spy(document, 'getElementById')
+
+      expect(qsa(document, '#ListID').length).to.equal(1)
+      expect(spy.callCount).to.equal(1)
+
+      spy.restore()
+    })
+
+    it('should use GetElementsByClassName', ()=> {
+      var spy = sinon.spy(document, 'getElementsByClassName')
+
+      expect(qsa(document, '.item-class').length).to.equal(1)
+      expect(spy.callCount).to.equal(1)
+      spy.restore()
+    })
+
+    it('should use qsa for complex selectors', ()=> {
+      var spy = sinon.spy(document, 'querySelectorAll')
+
+      expect(qsa(document, '.item-class li').length).to.equal(3)
+      expect(spy.callCount).to.equal(1)
+
+      spy.restore()
+    })
+  })
+
+  describe('Matches', () => {
+    beforeEach(()=>{
+      document.body.innerHTML = window.__html__['test/fixtures/matches.html']
+    })
+
+    it('should match', ()=> {
+      var child = document.getElementById('middle')
+        
+      expect(query.matches(child, '#middle')).to.be.ok()
+      expect(query.matches(child, 'li#middle')).to.be.ok()
+      expect(query.matches(child, '.item-class li')).to.be.ok()
+      expect(query.matches(child, '.item-class')).to.not.be.ok()
+    })
+  })
 
   describe('Contains', () => {
     beforeEach(()=>{

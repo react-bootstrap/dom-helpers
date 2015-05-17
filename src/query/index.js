@@ -14,6 +14,7 @@ module.exports = {
 
   scrollParent: require('./scrollParent'),
 
-  scrollTop: require('./scrollTop')
+  scrollTop: require('./scrollTop'),
 
+  querySelectorAll: require('./querySelectorAll')
 }
