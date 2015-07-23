@@ -2,7 +2,7 @@
 var canUseDOM = require('../util/inDOM');
 
 var has = Object.prototype.hasOwnProperty
-  , transform ='transform'
+  , transform = 'transform'
   , transition = {}
   , transitionTiming, transitionDuration
   , transitionProperty, transitionDelay;
