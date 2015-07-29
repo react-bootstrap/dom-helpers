@@ -18,7 +18,7 @@ describe('utils', () => {
     })
   })
 
-  describe.only('scrollbarSize', () => {
+  describe('scrollbarSize', () => {
 
     it('should return a size', () => {
       expect(scrollbarSize()).to.be.a('number')
