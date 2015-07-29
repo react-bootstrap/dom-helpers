@@ -1,4 +1,5 @@
 var raf = require('../src/util/requestAnimationFrame')
+var scrollbarSize = require('../src/util/scrollbarSize')
 
 describe('utils', () => {
 
@@ -16,4 +17,23 @@ describe('utils', () => {
       setTimeout(() => done(), 30)
     })
   })
+
+  describe.only('scrollbarSize', () => {
+
+    it('should return a size', () => {
+      expect(scrollbarSize()).to.be.a('number')
+    })
+
+    it('should return a size when recalculating', () => {
+      scrollbarSize()
+      expect(scrollbarSize(true)).to.be.a('number')
+    })
+
+    it('should return a size over and over again', () => {
+      expect(scrollbarSize()).to.be.a('number')
+      expect(scrollbarSize()).to.be.a('number')
+      expect(scrollbarSize()).to.be.a('number')
+    })
+  })
+
 })
