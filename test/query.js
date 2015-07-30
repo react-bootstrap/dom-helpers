@@ -158,7 +158,7 @@ describe('Query helpers', () => {
     })
   })
 
-  describe.only('Position', () => {
+  describe('Position', () => {
 
     beforeEach(()=> {
       document.body.innerHTML = window.__html__['test/fixtures/offset.html']
