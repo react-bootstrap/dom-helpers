@@ -2,13 +2,17 @@
 
 module.exports = {
 
-  matches: require('./matches'), 
-  
-  height: require('./height'), 
+  matches: require('./matches'),
 
-  width: require('./width'), 
+  height: require('./height'),
+
+  width: require('./width'),
 
   offset: require('./offset'),
+
+  offsetParent: require('./offsetParent'),
+
+  position: require('./position'),
 
   contains: require('./contains'),
 

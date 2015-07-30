@@ -41,6 +41,9 @@ Each level of the module can be required as a whole or you can drill down for a 
 ```
 
 - dom-helpers
+    - `ownerDocument(element)`: returns the element's document owner
+    - `ownerWindow(element)`: returns the element's document window
+    - `activeElement`: return focused element safely
     - query
         + `querySelectorAll(element, selector)`: optimized qsa, uses `getElementBy{Id|TagName|ClassName}` if it can.
         + `contains(container, element)`
@@ -48,7 +51,10 @@ Each level of the module can be required as a whole or you can drill down for a 
         + `width(element, useClientWidth)`
         + `matches(element, selector)`: `matches()` polyfill that works in ie8
         + `offset(element)` -> `{ top: Number, left: Number, top: height, width: Number}`
+        + `offsetParent(element)`: return the parent node that the element is offset from
+        + `position`: return "offset" of the node to its offsetParent
         + `scrollTop(element, [value])`
+        + `scrollLeft(element, [value])`
         + `scrollParent(element)`
     - class
         - `addClass(element, className)`

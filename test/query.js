@@ -1,9 +1,11 @@
 /*global expect sinon */
 var query = require('../src/query')
 
+var $ = require('jquery');
+
 describe('Query helpers', () => {
   var qsa = query.querySelectorAll
-  
+
   describe('QuerySelectorAll', () => {
 
     beforeEach(()=>{
@@ -53,7 +55,7 @@ describe('Query helpers', () => {
 
     it('should match', ()=> {
       var child = document.getElementById('middle')
-        
+
       expect(query.matches(child, '#middle')).to.be.ok()
       expect(query.matches(child, 'li#middle')).to.be.ok()
       expect(query.matches(child, '.item-class li')).to.be.ok()
@@ -114,6 +116,20 @@ describe('Query helpers', () => {
       document.body.innerHTML = window.__html__['test/fixtures/offset.html']
     })
 
+    it('should fallback when there is no gBCR', ()=> {
+       var offset = query.offset({ ownerDocument: document });
+
+      expect(offset.top).to.be.equal(0)
+      expect(offset.left).to.be.equal(0)
+    })
+
+    it('should fallback when node is disconnected', ()=> {
+      var offset = query.offset(document.createElement('div'));
+
+      expect(offset.top).to.be.equal(0)
+      expect(offset.left).to.be.equal(0)
+    })
+
     it('should handle absolute position', ()=> {
       var item = document.getElementById('item-abs');
 
@@ -122,7 +138,6 @@ describe('Query helpers', () => {
       expect(offset.top).to.be.equal(400)
       expect(offset.left).to.be.equal(350)
     })
-
 
     it('should handle nested positioning', ()=> {
       var item = document.getElementById('item-nested-abs');
@@ -141,6 +156,44 @@ describe('Query helpers', () => {
       expect(offset.top).to.be.equal(400)
       expect(offset.left).to.be.equal(350)
     })
+  })
+
+  describe.only('Position', () => {
+
+    beforeEach(()=> {
+      document.body.innerHTML = window.__html__['test/fixtures/offset.html']
+    })
+
+    it('should handle fixed offset', ()=> {
+      var item = document.getElementById('item-fixed');
+      var offset = query.position(item);
+
+      expect({ left: offset.left, top: offset.top }).to.be.eql($(item).position())
+    })
+
+    it('should handle absolute position', ()=> {
+      var item = document.getElementById('item-abs');
+
+      var offset = query.position(item);
+
+      expect({ left: offset.left, top: offset.top }).to.be.eql($(item).position())
+    })
+
+    it('should handle nested positioning', ()=> {
+      var item = document.getElementById('item-nested-abs');
+
+      var offset = query.position(item);
+
+      // console.log( $(item).offset(),
+      //   $(item).offsetParent().scrollTop())
+
+      // console.log(query.offset(item),
+      //   query.scrollTop(query.offsetParent(item)))
+
+      expect({ left: offset.left, top: offset.top }).to.be.eql($(item).position())
+    })
+
+
   })
 
 })

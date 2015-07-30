@@ -21,9 +21,9 @@ module.exports = function (config) {
     autoWatch: true,
     singleRun: false,
 
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
-    browsers: ['PhantomJS'], 
+    browsers: ['PhantomJS'],
 
     preprocessors: {
       'test/fixtures/*.html': 'html2js',
@@ -36,8 +36,8 @@ module.exports = function (config) {
       entry: __dirname + '/test.js',
       module: {
         loaders: [
-          { 
-            test:    /.js$/, 
+          {
+            test:    /.js$/,
             loader:  'babel-loader',
             exclude: /node_modules/
           }
