@@ -1,6 +1,6 @@
 {
   "name": "dom-helpers",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "tiny modular DOM lib for ie8+ ",
   "author": {
     "name": "Jason Quense",
@@ -52,6 +52,7 @@
     "karma-mocha": "~0.1.9",
     "karma-mocha-reporter": "^0.3.1",
     "karma-phantomjs-launcher": "~0.1.4",
+    "karma-sauce-launcher": "^0.2.14",
     "karma-sourcemap-loader": "^0.3.2",
     "karma-webpack": "^1.2.2",
     "less-loader": "^2.0.0",
