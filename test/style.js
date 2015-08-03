@@ -17,7 +17,7 @@ function reset(){
   style = null;
 };
 
-describe.only('style', () => {
+describe('style', () => {
   let container;
 
   beforeEach(()=>{
