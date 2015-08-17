@@ -1,5 +1,4 @@
 var canUseDOM = require('./inDOM');
-var style = require('../style')
 
 var size;
 
@@ -8,13 +7,11 @@ module.exports = function(recalc) {
     if (canUseDOM) {
       var scrollDiv = document.createElement('div');
 
-      style(scrollDiv, {
-        position: 'absolute',
-        top:      '-9999px',
-        width:    '50px',
-        height:   '50px',
-        overflow: 'scroll'
-      });
+      scrollDiv.style.position = 'absolute';		
+      scrollDiv.style.top = '-9999px';		
+      scrollDiv.style.width = '50px';		
+      scrollDiv.style.height = '50px';		
+      scrollDiv.style.overflow = 'scroll';
 
       document.body.appendChild(scrollDiv);
       size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
