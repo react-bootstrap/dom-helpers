@@ -52,7 +52,7 @@ Each level of the module can be required as a whole or you can drill down for a 
         + `matches(element, selector)`: `matches()` polyfill that works in ie8
         + `offset(element)` -> `{ top: Number, left: Number, top: height, width: Number}`
         + `offsetParent(element)`: return the parent node that the element is offset from
-        + `position`: return "offset" of the node to its offsetParent
+        + `position(element, [offsetParent]`: return "offset" of the node to its offsetParent, optionally you can specify the offset parent if different than the "real" one
         + `scrollTop(element, [value])`
         + `scrollLeft(element, [value])`
         + `scrollParent(element)`
