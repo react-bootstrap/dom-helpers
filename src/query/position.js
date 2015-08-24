@@ -8,9 +8,9 @@ function nodeName(node) {
   return node.nodeName && node.nodeName.toLowerCase();
 }
 
-export default function position(node){
+export default function position(node, offsetParent){
   var parentOffset = { top: 0, left: 0 }
-    , offsetParent, offset;
+    , offset;
 
   // Fixed elements are offset from window (parentOffset = {top:0, left: 0},
   // because it is its only offset parent
@@ -18,7 +18,7 @@ export default function position(node){
     offset = node.getBoundingClientRect();
   }
   else {
-    offsetParent = getOffsetParent(node);
+    offsetParent = offsetParent || getOffsetParent(node);
     offset = getOffset(node);
 
     if (nodeName(offsetParent) !== "html")
