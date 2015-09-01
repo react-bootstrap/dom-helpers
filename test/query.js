@@ -84,6 +84,21 @@ describe('Query helpers', () => {
 
   })
 
+  describe('Closest', () => {
+    beforeEach(()=>{
+      document.body.innerHTML = window.__html__['test/fixtures/query.html']
+    })
+
+    it('find Closest node', ()=> {
+      var child = document.getElementById('item-3')
+        , parent = document.getElementById('item-1');
+
+      expect(query.closest(child, '#item-1')).to.equal(parent)
+      expect(query.closest(child, '#item-40')).to.not.exist
+    })
+
+  })
+
   describe('ScrollParent', () => {
     beforeEach(()=>{
       document.body.innerHTML = window.__html__['test/fixtures/query.html']
