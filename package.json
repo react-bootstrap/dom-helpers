@@ -1,6 +1,6 @@
 {
   "name": "dom-helpers",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "tiny modular DOM lib for ie8+ ",
   "author": {
     "name": "Jason Quense",
@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "test": "karma start --single-run",
-    "test-watch": "karma start",
+    "tdd": "karma start",
     "clean": "gulp clean",
     "build": "gulp build"
   },

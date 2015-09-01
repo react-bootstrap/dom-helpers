@@ -20,5 +20,7 @@ module.exports = {
 
   scrollTop: require('./scrollTop'),
 
-  querySelectorAll: require('./querySelectorAll')
+  querySelectorAll: require('./querySelectorAll'),
+
+  closest:  require('./closest')
 }
