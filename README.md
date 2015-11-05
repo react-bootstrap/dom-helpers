@@ -77,8 +77,8 @@ Each level of the module can be required as a whole or you can drill down for a 
            } 
         ```
     - events
-        + `on(eventname, handler, [capture])`:  capture is silently ignored in ie8
-        + `off(eventname, handler, [capture])`: capture is silently ignored in ie8
+        + `on(node, eventname, handler, [capture])`:  capture is silently ignored in ie8
+        + `off(node, eventname, handler, [capture])`: capture is silently ignored in ie8
         + `filter(selector, fn)`: returns a function handler that only fires when the target matches or is contained in the selector ex: `events.on(list, 'click', events.filter('li > a', handler))`
     - util
         + `requestAnimationFrame(cb)` returns an ID for canceling
