@@ -1,6 +1,6 @@
 # dom-helpers
 
-tiny modular DOM lib for ie8+ 
+tiny modular DOM lib for ie8+
 
 ## Install
 
@@ -15,10 +15,10 @@ For example `events.on` works in all browsers ie8+ but it uses the native event 
 
 ```js
 if (document.addEventListener)
-  return (node, eventName, handler, capture) => 
+  return (node, eventName, handler, capture) =>
     node.addEventListener(eventName, handler, capture || false);
 else if (document.attachEvent)
-  return (node, eventName, handler) => 
+  return (node, eventName, handler) =>
       node.attachEvent('on' + eventName, handler);
 ```
 
@@ -60,12 +60,12 @@ Each level of the module can be required as a whole or you can drill down for a 
         - `addClass(element, className)`
         - `removeClass(element, className)`
         - `hasClass(element, className)`
-    - `style(element, propName, [value])` or `style(element, objectOfPropValues)` 
+    - `style(element, propName, [value])` or `style(element, objectOfPropValues)`
         + `removeStyle(element, styleName)`
         + `getComputedStyle(element)` -> `getPropertyvalue(name)`
     - transition
         + `end(node, handler, [duration])` listens for transition end, and ensures that the handler if called even if the transition fails to fire its end event. Will attempt to read duration from the element, otherwise one can be provided
-        + `properties`: Object containing the various vendor specifc transition and transform properties for your browser 
+        + `properties`: Object containing the various vendor specifc transition and transform properties for your browser
         ```js
            {
             transform: // transform property: 'transform'
@@ -74,11 +74,12 @@ Each level of the module can be required as a whole or you can drill down for a 
             timing:    // transition-timing
             delay:     // transition-delay  
             duration:  // transition-duration
-           } 
+           }
         ```
     - events
         + `on(node, eventname, handler, [capture])`:  capture is silently ignored in ie8
         + `off(node, eventname, handler, [capture])`: capture is silently ignored in ie8
+        + `listen(node, eventname, handler, [capture])`: wraps `on` and returns a function that calls `off` for you
         + `filter(selector, fn)`: returns a function handler that only fires when the target matches or is contained in the selector ex: `events.on(list, 'click', events.filter('li > a', handler))`
     - util
         + `requestAnimationFrame(cb)` returns an ID for canceling
