@@ -6,7 +6,7 @@ var getOffset = require('../query/offset')
   , raf = require('./requestAnimationFrame')
   , getWindow = require('../query/isWindow')
 
-module.exports = function scrollTo( selected, scrollParent ) {
+module.exports = function scrollTo( selected, scrollParent, scrollToTop = false ) {
   var offset = getOffset(selected)
     , poff   = { top: 0, left: 0 }
     , list, listScrollTop, selectedTop, isWin
@@ -34,7 +34,7 @@ module.exports = function scrollTo( selected, scrollParent ) {
     
     selectedHeight = offset.height
     selectedTop    = offset.top  + (isWin ? 0 : listScrollTop)
-    bottom         = selectedTop + selectedHeight
+    bottom         = scrollToTop ? selectedTop + listHeight : selectedTop + selectedHeight;
 
     listScrollTop = listScrollTop > selectedTop
           ? selectedTop
