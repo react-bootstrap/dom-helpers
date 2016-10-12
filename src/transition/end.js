@@ -1,14 +1,14 @@
-var transition = require('./properties')
-  , style = require('../style');
+import transition from './properties'
+import style from '../style'
 
-module.exports = function onEnd(node, handler, duration) {
-  var fakeEvent = { 
-        target:        node, 
-        currentTarget: node 
+function onEnd(node, handler, duration) {
+  var fakeEvent = {
+        target:        node,
+        currentTarget: node
       }
     , backup;
 
-  if (!transition.end) 
+  if (!transition.end)
     duration = 0
 
   else if ( duration == null )
@@ -19,7 +19,7 @@ module.exports = function onEnd(node, handler, duration) {
 
     backup = setTimeout(() => done(fakeEvent)
       , (duration || 100) * 1.5)
-  } 
+  }
   else
     setTimeout(done.bind(null, fakeEvent), 0)
 
@@ -31,7 +31,9 @@ module.exports = function onEnd(node, handler, duration) {
   }
 }
 
-module.exports._parseDuration = parseDuration
+onEnd._parseDuration = parseDuration
+
+export default onEnd;
 
 function parseDuration(node){
   var str = style(node, transition.duration)

@@ -1,5 +1,5 @@
-var rHyphen = /-(.)/g;
+let rHyphen = /-(.)/g;
 
-module.exports = function camelize(string) {
+export default function camelize(string) {
   return string.replace(rHyphen, (_, chr) => chr.toUpperCase())
 }

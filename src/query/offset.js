@@ -1,9 +1,8 @@
-'use strict';
-var contains = require('./contains')
-  , getWindow = require('./isWindow')
-  , ownerDocument = require('../ownerDocument')
+import contains from './contains'
+import getWindow from './isWindow'
+import ownerDocument from '../ownerDocument'
 
-module.exports = function offset(node) {
+export default function offset(node) {
   var doc = ownerDocument(node)
     , win = getWindow(doc)
     , docElem = doc && doc.documentElement

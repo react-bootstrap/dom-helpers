@@ -1,20 +1,28 @@
 'use strict';
-var style  = require('./style')
-  , events = require('./events')
-  , query  = require('./query')
-  , activeElement = require('./activeElement')
-  , ownerDocument = require('./ownerDocument')
-  , ownerWindow = require('./ownerWindow')
+import style from './style'
+import events from './events'
+import query from './query'
+import activeElement from './activeElement'
+import ownerDocument from './ownerDocument'
+import ownerWindow from './ownerWindow'
+import requestAnimationFrame from './util/requestAnimationFrame';
 
-module.exports = {
-
-  ...style,
-  ...events,
-  ...query,
-
+export {
+  style,
+  events,
+  query,
   activeElement,
   ownerDocument,
   ownerWindow,
+  requestAnimationFrame,
+}
 
-  requestAnimationFrame: require('./util/requestAnimationFrame')
+export default {
+  ...events,
+  ...query,
+  style,
+  activeElement,
+  ownerDocument,
+  ownerWindow,
+  requestAnimationFrame,
 }

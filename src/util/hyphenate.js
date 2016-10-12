@@ -1,6 +1,6 @@
 
-var rUpper = /([A-Z])/g;
+let rUpper = /([A-Z])/g;
 
-module.exports =  function hyphenate(string) {
+export default function hyphenate(string) {
   return string.replace(rUpper, '-$1').toLowerCase();
 }

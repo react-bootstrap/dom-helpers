@@ -1,6 +1,5 @@
-'use strict';
+import end from './end'
+import properties from './properties'
 
-module.exports = {
-  end: require('./end'),
-  properties: require('./properties')
-}
+export { end, properties }
+export default { end, properties }

@@ -1,26 +1,39 @@
-'use strict';
+import matches from './matches'
+import height from './height'
+import width from './width'
+import offset from './offset'
+import offsetParent from './offsetParent'
+import position from './position'
+import contains from './contains'
+import scrollParent from './scrollParent'
+import scrollTop from './scrollTop'
+import querySelectorAll from './querySelectorAll'
+import closest from './closest'
 
-module.exports = {
+export {
+  matches,
+  height,
+  width,
+  offset,
+  offsetParent,
+  position,
+  contains,
+  scrollParent,
+  scrollTop,
+  querySelectorAll,
+  closest
+}
 
-  matches: require('./matches'),
-
-  height: require('./height'),
-
-  width: require('./width'),
-
-  offset: require('./offset'),
-
-  offsetParent: require('./offsetParent'),
-
-  position: require('./position'),
-
-  contains: require('./contains'),
-
-  scrollParent: require('./scrollParent'),
-
-  scrollTop: require('./scrollTop'),
-
-  querySelectorAll: require('./querySelectorAll'),
-
-  closest:  require('./closest')
+export default {
+  matches,
+  height,
+  width,
+  offset,
+  offsetParent,
+  position,
+  contains,
+  scrollParent,
+  scrollTop,
+  querySelectorAll,
+  closest
 }

@@ -1,16 +1,16 @@
-var canUseDOM = require('../util/inDOM')
-var on = require('./on')
-var off = require('./off')
+import canUseDOM from '../util/inDOM'
+import on from './on'
+import off from './off'
 
-var listen = () => {}
+let listen = () => {}
 
 if (canUseDOM) {
-  listen = function(node, eventName, handler, capture) {
-    var eventHandler = on(node, eventName, handler, capture);
-    return function() {
+  listen = (node, eventName, handler, capture) => {
+    on(node, eventName, handler, capture);
+    return () => {
       off(node, eventName, handler, capture);
     }
   }
 }
 
-module.exports = listen
+export default listen

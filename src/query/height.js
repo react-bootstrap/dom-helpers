@@ -1,11 +1,11 @@
-var offset = require('./offset')
-  , getWindow = require('./isWindow');
+import offset from './offset'
+import getWindow from './isWindow'
 
-module.exports = function height(node, client){
-  var win = getWindow(node)
-  return win 
-    ? win.innerHeight 
-    : client 
-      ? node.clientHeight 
+export default function height(node, client){
+  let win = getWindow(node)
+  return win
+    ? win.innerHeight
+    : client
+      ? node.clientHeight
       : offset(node).height
 }

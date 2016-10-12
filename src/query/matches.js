@@ -1,28 +1,28 @@
-'use strict';
-var canUseDOM = require('../util/inDOM')
-  , qsa = require('./querySelectorAll')
-  , matches;
 
-if ( canUseDOM ) {
-  var body = document.body
-    , nativeMatch = body.matches 
+import canUseDOM from '../util/inDOM'
+import qsa from './querySelectorAll'
+
+let matches;
+if (canUseDOM) {
+  let body = document.body
+  let nativeMatch = body.matches
                  || body.matchesSelector
                  || body.webkitMatchesSelector
                  || body.mozMatchesSelector
                  || body.msMatchesSelector;
-  
-  matches = nativeMatch 
+
+  matches = nativeMatch
     ? (node, selector) => nativeMatch.call(node, selector)
     : ie8MatchesSelector
 }
 
-module.exports = matches
+export default matches
 
 function ie8MatchesSelector(node, selector) {
   var matches = qsa(node.document || node.ownerDocument, selector)
     , i = 0;
-  
+
   while (matches[i] && matches[i] !== node) i++;
-  
+
   return !!matches[i];
 }

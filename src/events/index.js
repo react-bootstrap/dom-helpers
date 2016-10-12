@@ -1,7 +1,7 @@
-'use strict';
-var on = require('./on')
-  , off = require('./off')
-  , filter = require('./filter')
-  , listen = require('./listen')
+import on from './on'
+import off from './off'
+import filter from './filter'
+import listen from './listen'
 
-module.exports = { on, off, filter, listen }
+export { on, off, filter, listen }
+export default { on, off, filter, listen }

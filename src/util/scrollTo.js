@@ -1,48 +1,45 @@
-'use strict';
-var getOffset = require('../query/offset')
-  , height = require('../query/height')
-  , getScrollParent = require('../query/scrollParent')
-  , scrollTop = require('../query/scrollTop')
-  , raf = require('./requestAnimationFrame')
-  , getWindow = require('../query/isWindow')
+import getOffset from '../query/offset'
+import height from '../query/height'
+import getScrollParent from '../query/scrollParent'
+import scrollTop from '../query/scrollTop'
+import raf from './requestAnimationFrame'
+import getWindow from '../query/isWindow'
 
-module.exports = function scrollTo( selected, scrollParent ) {
-  var offset = getOffset(selected)
-    , poff   = { top: 0, left: 0 }
-    , list, listScrollTop, selectedTop, isWin
-    , selectedHeight, listHeight, bottom;
+export default function scrollTo(selected, scrollParent) {
+  let offset = getOffset(selected)
+  let poff   = { top: 0, left: 0 }
+  let list, listScrollTop, selectedTop, isWin
+  let selectedHeight, listHeight, bottom;
 
-    if( !selected ) return 
+  if( !selected ) return
 
-    list          = scrollParent || getScrollParent(selected)
-    isWin         = getWindow(list)
-    listScrollTop = scrollTop(list)
+  list          = scrollParent || getScrollParent(selected)
+  isWin         = getWindow(list)
+  listScrollTop = scrollTop(list)
 
-    listHeight    = height(list, true)
-    isWin         = getWindow(list)
+  listHeight    = height(list, true)
+  isWin         = getWindow(list)
 
-    if (!isWin) 
-      poff = getOffset(list)
+  if (!isWin)
+    poff = getOffset(list)
 
-    offset     = {
-      top:    offset.top  - poff.top,
-      left:   offset.left - poff.left,
-      height: offset.height,
-      width:  offset.width
-    }
+  offset = {
+    top:    offset.top  - poff.top,
+    left:   offset.left - poff.left,
+    height: offset.height,
+    width:  offset.width
+  }
 
-    
-    selectedHeight = offset.height
-    selectedTop    = offset.top  + (isWin ? 0 : listScrollTop)
-    bottom         = selectedTop + selectedHeight
+  selectedHeight = offset.height
+  selectedTop    = offset.top  + (isWin ? 0 : listScrollTop)
+  bottom         = selectedTop + selectedHeight
 
-    listScrollTop = listScrollTop > selectedTop
-          ? selectedTop
-          : bottom > (listScrollTop + listHeight) 
-              ? (bottom - listHeight)
-              : listScrollTop
+  listScrollTop = listScrollTop > selectedTop
+    ? selectedTop
+    : bottom > (listScrollTop + listHeight)
+        ? (bottom - listHeight)
+        : listScrollTop
 
-    var id = raf(() => scrollTop(list, listScrollTop))
-
-    return () => raf.cancel(id)
+  let id = raf(() => scrollTop(list, listScrollTop))
+  return () => raf.cancel(id)
 }

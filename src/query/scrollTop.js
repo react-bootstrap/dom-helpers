@@ -1,20 +1,19 @@
-'use strict';
-var getWindow = require('./isWindow')
+import getWindow from './isWindow'
 
-module.exports = function scrollTop(node, val){
+export default function scrollTop(node, val){
   var win = getWindow(node);
 
   if ( val === undefined )
-    return win 
-      ? ('pageYOffset' in win) 
+    return win
+      ? ('pageYOffset' in win)
         ? win.pageYOffset
-        : win.document.documentElement.scrollTop 
+        : win.document.documentElement.scrollTop
       : node.scrollTop;
-  
-  if ( win ) 
-    win.scrollTo(('pageXOffset' in win) 
-      ? win.pageXOffset 
+
+  if ( win )
+    win.scrollTo(('pageXOffset' in win)
+      ? win.pageXOffset
       : win.document.documentElement.scrollLeft, val)
-  else 
+  else
     node.scrollTop = val
 }

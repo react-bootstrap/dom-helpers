@@ -1,16 +1,14 @@
-'use strict';
+import canUseDOM from './inDOM'
 
-var canUseDOM = require('./inDOM')
+let vendors = ['', 'webkit', 'moz', 'o', 'ms']
+let cancel = 'clearTimeout'
+let raf    = fallback
+let compatRaf
 
-var vendors = ['', 'webkit', 'moz', 'o', 'ms']
-  , cancel = 'clearTimeout'
-  , raf    = fallback
-  , compatRaf;
-  
-var getKey = (vendor, k) => 
+let getKey = (vendor, k) =>
   vendor + (!vendor  ? k :(k[0].toUpperCase() + k.substr(1))) + 'AnimationFrame'
 
-if ( canUseDOM ) {
+if (canUseDOM) {
   vendors.some(vendor => {
     var rafKey = getKey(vendor, 'request')
 
@@ -22,7 +20,7 @@ if ( canUseDOM ) {
 }
 
 /* https://github.com/component/raf */
-var prev = new Date().getTime();
+let prev = new Date().getTime();
 
 function fallback(fn) {
   var curr = new Date().getTime()
@@ -36,8 +34,4 @@ function fallback(fn) {
 compatRaf = cb => raf(cb)
 compatRaf.cancel = id => window[cancel](id)
 
-
-module.exports = compatRaf
-
-
-
+export default compatRaf

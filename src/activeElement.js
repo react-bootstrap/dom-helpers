@@ -1,11 +1,8 @@
 import ownerDocument from './ownerDocument';
 
-/**
- * document.activeElement
- */
-export default function activeElement(doc = document){
+export default function activeElement(doc = ownerDocument()) {
   try {
     return doc.activeElement;
   }
-  catch (e) {}
+  catch (e) { /* ie throws if no active element */ }
 }

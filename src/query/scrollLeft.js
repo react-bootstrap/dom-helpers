@@ -1,7 +1,6 @@
-'use strict';
-var getWindow = require('./isWindow')
+import getWindow from './isWindow'
 
-module.exports = function scrollTop(node, val){
+export default function scrollTop(node, val){
   var win = getWindow(node);
 
   if ( val === undefined )

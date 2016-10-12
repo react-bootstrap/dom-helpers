@@ -1,26 +1,32 @@
-'use strict';
-var canUseDOM = require('../util/inDOM');
+import canUseDOM from '../util/inDOM';
 
-var has = Object.prototype.hasOwnProperty
-  , transform = 'transform'
-  , transition = {}
-  , transitionTiming, transitionDuration
-  , transitionProperty, transitionDelay;
+let transform = 'transform'
+let prefix, transitionEnd;
+let transitionTiming, transitionDuration
+let transitionProperty, transitionDelay;
 
-if ( canUseDOM ) {
-  transition = getTransitionProperties();
+if (canUseDOM) {
+  ({ prefix, transitionEnd } = getTransitionProperties());
 
-  transform = transition.prefix + transform
-
-  transitionProperty = transition.prefix + 'transition-property'
-  transitionDuration = transition.prefix + 'transition-duration'
-  transitionDelay    = transition.prefix + 'transition-delay'
-  transitionTiming   = transition.prefix + 'transition-timing-function'
+  transform = `${prefix}-${transform}`
+  transitionProperty = `${prefix}-transition-property`
+  transitionDuration = `${prefix}-transition-duration`
+  transitionDelay    = `${prefix}-transition-delay`
+  transitionTiming   = `${prefix}-transition-timing-function`
 }
 
-module.exports = {
+export {
   transform,
-  end:      transition.end,
+  transitionProperty,
+  transitionTiming,
+  transitionDelay,
+  transitionDuration,
+  transitionEnd,
+}
+
+export default {
+  transform,
+  end:      transitionEnd,
   property: transitionProperty,
   timing:   transitionTiming,
   delay:    transitionDelay,
@@ -28,29 +34,30 @@ module.exports = {
 }
 
 
-function getTransitionProperties(){
-  var endEvent
-    , prefix = ''
-    , transitions = {
-        O:      'otransitionend',
-        Moz:    'transitionend',
-        Webkit: 'webkitTransitionEnd',
-        ms:     'MSTransitionEnd'
-      };
+function getTransitionProperties() {
+  let transitionEnd
+  let prefix = ''
+  let eventNames = {
+    O:      'otransitionend',
+    Moz:    'transitionend',
+    Webkit: 'webkitTransitionEnd',
+    ms:     'MSTransitionEnd'
+  };
 
-  var element = document.createElement('div')
-
-  for(var vendor in transitions) if( has.call(transitions, vendor) )
+  let element = document.createElement('div')
+  for (let vendor in eventNames) if (eventNames.hasOwnProperty(vendor))
   {
-    if (element.style[vendor + 'TransitionProperty'] !== undefined) {
-      prefix = '-' + vendor.toLowerCase() + '-'
-      endEvent = transitions[vendor];
+    if (element.style[`${vendor}TransitionProperty`] !== undefined) {
+      prefix = `-${vendor.toLowerCase()}`
+      transitionEnd = eventNames[vendor];
       break
     }
   }
 
-  if (!endEvent && element.style.transitionProperty !== undefined)
-    endEvent = 'transitionend'
+  if (!transitionEnd && element.style.transitionProperty !== undefined)
+    transitionEnd = 'transitionend'
 
-  return { end: endEvent, prefix }
+  element = null;
+
+  return { transitionEnd, prefix }
 }

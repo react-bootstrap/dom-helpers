@@ -1,13 +1,13 @@
-var contains = require('../query/contains')
-  , qsa = require('../query/querySelectorAll')
+import contains from '../query/contains'
+import qsa from '../query/querySelectorAll'
 
-module.exports = function(selector, handler) {
-  return function(e){
-    var top = e.currentTarget
+export default function filterEvents(selector, handler) {
+  return function filterHandler(e) {
+    let top = e.currentTarget
       , target = e.target
       , matches = qsa(top, selector);
 
-    if ( matches.some(match => contains(match, target)))
+    if (matches.some(match => contains(match, target)))
       handler.call(this, e)
   }
 }

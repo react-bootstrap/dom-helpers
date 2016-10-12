@@ -1,7 +1,6 @@
-'use strict';
+import addClass from './addClass';
+import removeClass from './removeClass';
+import hasClass from './hasClass';
 
-module.exports = {
-  addClass: require('./addClass'),
-  removeClass: require('./removeClass'),
-  hasClass: require('./hasClass')
-}
+export { addClass, removeClass, hasClass }
+export default { addClass, removeClass, hasClass }

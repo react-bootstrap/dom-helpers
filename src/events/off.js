@@ -1,19 +1,16 @@
-'use strict';
-var canUseDOM = require('../util/inDOM')
-var off = ()=>{}
+import canUseDOM from '../util/inDOM'
 
+let off = () => {}
 if (canUseDOM) {
-
   off = (function(){
- 
     if (document.addEventListener)
-      return (node, eventName, handler, capture) => 
+      return (node, eventName, handler, capture) =>
           node.removeEventListener(eventName, handler, capture || false);
 
     else if (document.attachEvent)
-      return (node, eventName, handler) => 
+      return (node, eventName, handler) =>
           node.detachEvent('on' + eventName, handler);
   })();
 }
 
-module.exports = off
+export default off

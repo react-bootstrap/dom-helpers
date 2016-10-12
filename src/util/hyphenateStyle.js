@@ -4,11 +4,9 @@
  * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/hyphenateStyleName.js
  */
 
-"use strict";
+import hyphenate from './hyphenate'
 
-var hyphenate = require("./hyphenate");
-var msPattern = /^ms-/;
-
-module.exports = function hyphenateStyleName(string) {
+let msPattern = /^ms-/;
+export default function hyphenateStyleName(string) {
   return hyphenate(string).replace(msPattern, '-ms-');
 }

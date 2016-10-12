@@ -1,32 +1,39 @@
-'use strict';
+import camelize from '../util/camelizeStyle'
+import hyphenate from '../util/hyphenateStyle'
+import _getComputedStyle from './getComputedStyle'
+import removeStyle from './removeStyle'
+import { transform } from '../transition/properties';
+import isTransform from '../transition/isTransform';
 
-var camelize  = require('../util/camelizeStyle')
-  , hyphenate = require('../util/hyphenateStyle')
-  , _getComputedStyle = require('./getComputedStyle')
-  , removeStyle = require('./removeStyle');
+export default function style(node, property, value) {
+  let css = '';
+  let transforms = '';
+  let props = property;
 
-var has = Object.prototype.hasOwnProperty;
-
-module.exports = function style(node, property, value){
-  var css = ''
-    , props = property;
-
-  if ( typeof property === 'string') {
-
-    if ( value === undefined)
+  if (property === 'string') {
+    if (value === undefined)
       return node.style[camelize(property)]
           || _getComputedStyle(node).getPropertyValue(hyphenate(property))
     else
       (props = {})[property] = value
   }
 
-  for(var key in props) if ( has.call(props, key) )
-  {
-    !props[key] && props[key] !== 0
-      ? removeStyle(node, hyphenate(key))
-      : (css += hyphenate(key) + ':' + props[key] + ';')
+  Object.keys(props).forEach(key => {
+    let value = props[key];
+    if (!value && value !== 0) {
+      removeStyle(node, hyphenate(key))
+    }
+    else if (isTransform(key)) {
+      transforms += `${key}(${value}) `
+    }
+    else {
+      css += `${hyphenate(key)}: ${value};`
+    }
+  })
+
+  if (transforms) {
+    css += `${transform}: ${transforms};`
   }
 
   node.style.cssText += ';' + css
 }
-

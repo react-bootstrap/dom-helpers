@@ -1,21 +1,19 @@
-'use strict';
+import css from '../style'
+import height  from './height'
 
-var css = require('../style')
-  , height  = require('./height')
-
-module.exports = function scrollPrarent(node){
+export default function scrollPrarent(node){
   var position = css(node, 'position')
     , excludeStatic = position === 'absolute'
     , ownerDoc = node.ownerDocument;
 
-  if (position === 'fixed') 
+  if (position === 'fixed')
     return ownerDoc || document
 
   while ( (node = node.parentNode) && node.nodeType !== 9){
-    
+
     var isStatic = excludeStatic && css(node, 'position' ) === 'static'
-      , style    = css(node, 'overflow') 
-                 + css(node, 'overflow-y') 
+      , style    = css(node, 'overflow')
+                 + css(node, 'overflow-y')
                  + css(node, 'overflow-x');
 
 

@@ -1,14 +1,13 @@
-'use strict';
 import camelize from '../util/camelizeStyle';
 
-var rposition = /^(top|right|bottom|left)$/;
-var rnumnonpx = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(?!px)[a-z%]+$/i;
+let rposition = /^(top|right|bottom|left)$/;
+let rnumnonpx = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(?!px)[a-z%]+$/i;
 
-module.exports = function _getComputedStyle(node) {
-  if (!node) throw new TypeError("No Element passed to `getComputedStyle()`")
+export default function _getComputedStyle(node) {
+  if (!node) throw new TypeError('No Element passed to `getComputedStyle()`')
   var doc = node.ownerDocument;
 
-  return "defaultView" in doc
+  return 'defaultView' in doc
     ? doc.defaultView.opener
       ? node.ownerDocument.defaultView.getComputedStyle( node, null )
       : window.getComputedStyle(node, null)
@@ -32,11 +31,11 @@ module.exports = function _getComputedStyle(node) {
             let rsLeft = runStyle && runStyle.left;
 
             // Put in the new values to get a computed value out
-            if ( rsLeft )
+            if (rsLeft)
               runStyle.left = node.currentStyle.left;
 
-            style.left = prop === "fontSize" ? "1em" : current;
-            current = style.pixelLeft + "px";
+            style.left = prop === 'fontSize' ? '1em' : current;
+            current = style.pixelLeft + 'px';
 
             // Revert the changed values
             style.left = left;
@@ -47,4 +46,3 @@ module.exports = function _getComputedStyle(node) {
         }
       }
 }
-
