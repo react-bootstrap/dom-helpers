@@ -10,12 +10,13 @@ export default function style(node, property, value) {
   let transforms = '';
   let props = property;
 
-  if (property === 'string') {
-    if (value === undefined)
+  if (typeof property === 'string') {
+    if (value === undefined) {
       return node.style[camelize(property)]
           || _getComputedStyle(node).getPropertyValue(hyphenate(property))
-    else
+    } else {
       (props = {})[property] = value
+    }
   }
 
   Object.keys(props).forEach(key => {

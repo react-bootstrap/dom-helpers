@@ -55,7 +55,6 @@ describe('Query helpers', () => {
 
     it('should match', ()=> {
       var child = document.getElementById('middle')
-
       expect(query.matches(child, '#middle')).to.be.ok()
       expect(query.matches(child, 'li#middle')).to.be.ok()
       expect(query.matches(child, '.item-class li')).to.be.ok()

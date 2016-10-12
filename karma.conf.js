@@ -6,12 +6,11 @@ module.exports = function (config) {
 
     basePath: '',
 
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'sinon'],
 
     reporters: ['mocha'],
 
     files: [
-      'vendor/sinon-1.10.3.js', //because sinon hates webpack
       'test/fixtures/*.html',
       'test.js'
     ],

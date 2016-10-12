@@ -9,9 +9,11 @@ npm i -S dom-helpers
 ```
 
 
-Mostly just naive wrappers around common DOM API inconsitencies, Cross browser work is minimal and mostly taken from jQuery. This library doesn't do a lot to normalize behavior across browsers, it mostly seeks to provide a common interface, and elminate the need to write the same damn `if (ie8)` statements in every project.
+Mostly just naive wrappers around common DOM API inconsistencies, Cross browser work is minimal and mostly taken from jQuery. This library doesn't do a lot to normalize behavior across browsers, it mostly seeks to provide a common interface, and eliminate the need to write the same damn `if (ie8)` statements in every project.
 
 For example `events.on` works in all browsers ie8+ but it uses the native event system so actual event oddities will continue to exist. If you need __robust__ cross-browser support, use jQuery. If you are just tired of rewriting:
+
+It does expect certain, polyfillable, es5 features to be present for which you can use `es5-shim` for ie8
 
 ```js
 if (document.addEventListener)
@@ -22,9 +24,9 @@ else if (document.attachEvent)
       node.attachEvent('on' + eventName, handler);
 ```
 
-over and over again, or you need a ok `getComputedStyle` polyfill but don't want to include all of jquery, use this.
+over and over again, or you need a ok `getComputedStyle` polyfill but don't want to include all of jQuery, use this.
 
-The real advantage to this collection is that any method can be required individually, meaning tools like Browserify or Webpack will only include the exact methods you use. This is great for environments where jQuery doesn't make sense, such as `React` where you only occasionally need to do direct DOM manipulation.
+The real advantage to this collection is that any method can be required individually, meaning tools like Browserify or webpack will only include the exact methods you use. This is great for environments where jQuery doesn't make sense, such as `React` where you only occasionally need to do direct DOM manipulation.
 
 Each level of the module can be required as a whole or you can drill down for a specific method or section:
 
@@ -62,10 +64,11 @@ Each level of the module can be required as a whole or you can drill down for a 
         - `hasClass(element, className)`
     - `style(element, propName, [value])` or `style(element, objectOfPropValues)`
         + `removeStyle(element, styleName)`
-        + `getComputedStyle(element)` -> `getPropertyvalue(name)`
+        + `getComputedStyle(element)` -> `getPropertyValue(name)`
     - transition
+        + `animate(node, properties, duration, easing, callback)` programmatically start css transitions    
         + `end(node, handler, [duration])` listens for transition end, and ensures that the handler if called even if the transition fails to fire its end event. Will attempt to read duration from the element, otherwise one can be provided
-        + `properties`: Object containing the various vendor specifc transition and transform properties for your browser
+        + `properties`: Object containing the various vendor specific transition and transform properties for your browser
         ```js
            {
             transform: // transform property: 'transform'
@@ -77,9 +80,9 @@ Each level of the module can be required as a whole or you can drill down for a 
            }
         ```
     - events
-        + `on(node, eventname, handler, [capture])`:  capture is silently ignored in ie8
-        + `off(node, eventname, handler, [capture])`: capture is silently ignored in ie8
-        + `listen(node, eventname, handler, [capture])`: wraps `on` and returns a function that calls `off` for you
+        + `on(node, eventName, handler, [capture])`:  capture is silently ignored in ie8
+        + `off(node, eventName, handler, [capture])`: capture is silently ignored in ie8
+        + `listen(node, eventName, handler, [capture])`: wraps `on` and returns a function that calls `off` for you
         + `filter(selector, fn)`: returns a function handler that only fires when the target matches or is contained in the selector ex: `events.on(list, 'click', events.filter('li > a', handler))`
     - util
         + `requestAnimationFrame(cb)` returns an ID for canceling

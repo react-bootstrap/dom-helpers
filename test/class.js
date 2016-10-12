@@ -27,5 +27,5 @@ describe('Class helpers', () => {
     expect(cls.hasClass(document.getElementById('item-2'), 'test-class')).to.equal(true)
     expect(cls.hasClass(document.getElementById('item-1'), 'test-class')).to.equal(false)
   })
-  
+
 })
