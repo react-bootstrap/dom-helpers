@@ -32,6 +32,7 @@ function fallback(fn) {
 }
 
 compatRaf = cb => raf(cb)
-compatRaf.cancel = id => window[cancel](id)
-
+compatRaf.cancel = id => {
+  window[cancel] && typeof window[cancel] === 'function' && window[cancel](id);
+}
 export default compatRaf
