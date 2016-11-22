@@ -10,7 +10,12 @@ if (canUseDOM) {
 
     else if (document.attachEvent)
       return (node, eventName, handler) =>
-          node.attachEvent('on' + eventName, handler);
+          node.attachEvent('on' + eventName, (e) => {
+            e = e || window.event;
+            e.target = e.target || e.srcElement;
+            e.currentTarget = node;
+            handler.call(node, e);
+          });
   })();
 }
 
