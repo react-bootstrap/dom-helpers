@@ -1,18 +1,23 @@
 import canUseDOM from '../util/inDOM';
 
 let transform = 'transform'
-let prefix, transitionEnd;
-let transitionTiming, transitionDuration
-let transitionProperty, transitionDelay;
+let prefix, transitionEnd, animationEnd;
+let transitionProperty, transitionDuration, transitionTiming, transitionDelay;
+let animationName, animationDuration, animationTiming, animationDelay;
 
 if (canUseDOM) {
-  ({ prefix, transitionEnd } = getTransitionProperties());
+  ({ prefix, transitionEnd, animationEnd } = getTransitionProperties());
 
   transform = `${prefix}-${transform}`
   transitionProperty = `${prefix}-transition-property`
   transitionDuration = `${prefix}-transition-duration`
   transitionDelay    = `${prefix}-transition-delay`
   transitionTiming   = `${prefix}-transition-timing-function`
+
+  animationName     = `${prefix}-animation-name`
+  animationDuration = `${prefix}-animation-duration`
+  animationTiming   = `${prefix}-animation-delay`
+  animationDelay    = `${prefix}-animation-timing-function`
 }
 
 export {
@@ -22,6 +27,12 @@ export {
   transitionDelay,
   transitionDuration,
   transitionEnd,
+
+  animationName,
+  animationDuration,
+  animationTiming,
+  animationDelay,
+  animationEnd,
 }
 
 export default {
@@ -34,30 +45,41 @@ export default {
 }
 
 
+
+
 function getTransitionProperties() {
-  let transitionEnd
-  let prefix = ''
-  let eventNames = {
-    O:      'otransitionend',
-    Moz:    'transitionend',
-    Webkit: 'webkitTransitionEnd',
-    ms:     'MSTransitionEnd'
+  let style = document.createElement('div').style
+
+  let vendorMap = {
+    O: e => `o${e.toLowerCase()}`,
+    Moz: e => `moz${e}`,
+    Webkit: e => `webkit${e}`,
+    ms: e => `MS${e}`,
   };
 
-  let element = document.createElement('div')
-  for (let vendor in eventNames) if (eventNames.hasOwnProperty(vendor))
-  {
-    if (element.style[`${vendor}TransitionProperty`] !== undefined) {
+  let vendors = Object.keys(vendorMap);
+
+  let transitionEnd, animationEnd;
+  let prefix = ''
+
+  for (let i = 0; i < vendors.length; i++) {
+    let vendor = vendors[i];
+
+    if (`${vendor}TransitionProperty` in style) {
       prefix = `-${vendor.toLowerCase()}`
-      transitionEnd = eventNames[vendor];
-      break
+      transitionEnd = vendorMap[vendor]('TransitionEnd');
+      animationEnd = vendorMap[vendor]('AnimationEnd');
+      break;
     }
   }
 
-  if (!transitionEnd && element.style.transitionProperty !== undefined)
+  if (!transitionEnd && 'transitionProperty' in style)
     transitionEnd = 'transitionend'
 
-  element = null;
+  if (!animationEnd && 'animationName' in style)
+    transitionEnd = 'animationend'
 
-  return { transitionEnd, prefix }
+  style = null;
+
+  return { animationEnd, transitionEnd, prefix }
 }

@@ -22,7 +22,7 @@ module.exports = function (config) {
 
     logLevel: config.LOG_INFO,
 
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     preprocessors: {
       'test/fixtures/*.html': 'html2js',

@@ -35,5 +35,4 @@ describe('utils', () => {
       expect(scrollbarSize()).to.be.a('number')
     })
   })
-
 })

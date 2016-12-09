@@ -12,7 +12,7 @@ if (canUseDOM) {
   vendors.some(vendor => {
     var rafKey = getKey(vendor, 'request')
 
-    if ( rafKey in window ){
+    if (rafKey in window) {
       cancel = getKey(vendor, 'cancel')
       return raf = cb => window[rafKey](cb)
     }
@@ -21,7 +21,6 @@ if (canUseDOM) {
 
 /* https://github.com/component/raf */
 let prev = new Date().getTime();
-
 function fallback(fn) {
   var curr = new Date().getTime()
     , ms = Math.max(0, 16 - (curr - prev))

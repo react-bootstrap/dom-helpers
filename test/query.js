@@ -130,7 +130,7 @@ describe('Query helpers', () => {
       document.body.innerHTML = window.__html__['test/fixtures/offset.html']
     })
 
-    it('should fallback when there is no gBCR', ()=> {
+    xit('should fallback when there is no gBCR', ()=> {
        var offset = query.offset({ ownerDocument: document });
 
       expect(offset.top).to.be.equal(0)
