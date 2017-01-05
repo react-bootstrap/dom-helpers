@@ -13,8 +13,6 @@ Mostly just naive wrappers around common DOM API inconsistencies, Cross browser 
 
 For example `events.on` works in all browsers ie8+ but it uses the native event system so actual event oddities will continue to exist. If you need __robust__ cross-browser support, use jQuery. If you are just tired of rewriting:
 
-It does expect certain, polyfillable, es5 features to be present for which you can use `es5-shim` for ie8
-
 ```js
 if (document.addEventListener)
   return (node, eventName, handler, capture) =>
@@ -25,6 +23,8 @@ else if (document.attachEvent)
 ```
 
 over and over again, or you need a ok `getComputedStyle` polyfill but don't want to include all of jQuery, use this.
+
+dom-helpers does expect certain, polyfillable, es5 features to be present for which you can use `es5-shim` for ie8
 
 The real advantage to this collection is that any method can be required individually, meaning tools like Browserify or webpack will only include the exact methods you use. This is great for environments where jQuery doesn't make sense, such as `React` where you only occasionally need to do direct DOM manipulation.
 
