@@ -73,10 +73,10 @@ function getTransitionProperties() {
     }
   }
 
-  if (!transitionEnd && 'transitionProperty' in style)
+  if (!transitionEnd || 'transitionProperty' in style)
     transitionEnd = 'transitionend'
 
-  if (!animationEnd && 'animationName' in style)
+  if (!animationEnd || 'animationName' in style)
     transitionEnd = 'animationend'
 
   style = null;
