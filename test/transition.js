@@ -3,11 +3,6 @@ var transition = require('../src/transition')
 var props = transition.properties;
 
 describe('Transition helpers', () => {
-
-  //beforeEach(()=>{
-  //   document.body.innerHTML = window.__html__['test/fixtures/event.html']
-  // })
-
   it('should parse duration from node property', () => {
     var el = document.createElement('div');
 
@@ -18,5 +13,5 @@ describe('Transition helpers', () => {
     el.style[props.duration] = '500ms'
 
     expect(transition.end._parseDuration(el)).to.equal(500)
-  })  
+  })
 })

@@ -52,7 +52,7 @@ function getTransitionProperties() {
 
   let vendorMap = {
     O: e => `o${e.toLowerCase()}`,
-    Moz: e => `moz${e}`,
+    Moz: e => e.toLowerCase(),
     Webkit: e => `webkit${e}`,
     ms: e => `MS${e}`,
   };
@@ -77,7 +77,7 @@ function getTransitionProperties() {
     transitionEnd = 'transitionend'
 
   if (!animationEnd && 'animationName' in style)
-    transitionEnd = 'animationend'
+    animationEnd = 'animationend'
 
   style = null;
 
