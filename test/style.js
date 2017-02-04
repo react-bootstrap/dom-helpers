@@ -15,7 +15,7 @@ function reset(){
     style.remove();
   }
   style = null;
-};
+}
 
 describe('style', () => {
   let container;
@@ -53,8 +53,8 @@ describe('style', () => {
   })
 
   it('should get style', () => {
-    expect(css(container,'margin-left')).to.equal('16px');
-    expect(css(container,'paddingRight')).to.equal('20px')
-    expect(css(container,'padding-right')).to.equal('20px')
+    expect(css(container, 'margin-left')).to.equal('16px');
+    expect(css(container, 'paddingRight')).to.equal('20px')
+    expect(css(container, 'padding-right')).to.equal('20px')
   })
 })
