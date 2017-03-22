@@ -3,7 +3,7 @@ import canUseDOM from './inDOM'
 let size;
 
 export default function(recalc) {
-  if (!size || recalc) {
+  if (size !== undefined || recalc) {
     if (canUseDOM) {
       var scrollDiv = document.createElement('div');
 
