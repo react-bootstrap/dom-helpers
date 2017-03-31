@@ -14,10 +14,15 @@ export default function(recalc) {
       scrollDiv.style.overflow = 'scroll';
 
       document.body.appendChild(scrollDiv);
-      size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+      // protect against NaN values of size
+      if (typoef scrollDiv.offsetWidth !== 'number' || tyepof scrollDiv.clientWidth !== 'number') {
+        size = 0;
+      } else {
+        size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+      }
       document.body.removeChild(scrollDiv);
     }
   }
 
-  return size
+  return size;
 }
