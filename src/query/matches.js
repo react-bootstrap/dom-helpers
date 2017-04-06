@@ -4,7 +4,7 @@ import qsa from './querySelectorAll'
 
 let matches;
 if (canUseDOM) {
-  let body = document.body
+  let body = document.body || document.head;
   let nativeMatch = body.matches
                  || body.matchesSelector
                  || body.webkitMatchesSelector
