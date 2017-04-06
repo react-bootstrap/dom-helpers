@@ -8,7 +8,11 @@
   },
   "repository": "jquense/dom-helpers",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "postinstall.sh"
+  ],
   "keywords": [
     "dom-helpers",
     "react-component",
@@ -27,14 +31,15 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "clean": "rimraf ./lib/*",
-    "copy": "cpy ./README.md ./lib",
-    "build": "babel src --out-dir lib && npm run copy",
+    "clean": "rimraf ./src/*",
+    "copy": "cpy ./README.md ./dist",
+    "build": "babel src --out-dir dist && npm run copy",
     "lint": "eslint src",
+    "postinstall": "./postinstall.sh",
     "release": "release"
   },
   "release-script": {
-    "altPkgRootFolder": "lib"
+    "altPkgRootFolder": "dist"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
