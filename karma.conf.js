@@ -1,5 +1,7 @@
 'use strict';
 
+var isCI = process.env.CONTINUOUS_INTEGRATION === 'true';
+
 module.exports = function (config) {
 
   config.set({
@@ -22,7 +24,14 @@ module.exports = function (config) {
 
     logLevel: config.LOG_INFO,
 
-    browsers: ['Chrome'],
+    browsers: [ isCI ? 'ChromeTravisCI' : 'Chrome', 'Firefox' ],
+
+    customLaunchers: {
+      ChromeTravisCI: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
 
     preprocessors: {
       'test/fixtures/*.html': 'html2js',
