@@ -9,5 +9,5 @@ module.exports = function removeClass(element, className){
   else if (typeof element.className === 'string')
     element.className = replaceClassName(element.className, className)
   else
-    element.setAttribute('class', replaceClassName(element.className, className))
+    element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className))
 }
