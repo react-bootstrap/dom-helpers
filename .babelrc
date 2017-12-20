@@ -1,4 +1,5 @@
 {
-  "presets": ["latest", "stage-3"],
-  "plugins": ["add-module-exports"]
+  "presets": [
+  	"./.babelrc.js"
+  ]
 }

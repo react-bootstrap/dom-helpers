@@ -9,6 +9,7 @@
   "repository": "jquense/dom-helpers",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "keywords": [
     "dom-helpers",
     "react-component",
@@ -25,11 +26,13 @@
     "css"
   ],
   "scripts": {
-    "test": "karma start --single-run",
-    "tdd": "karma start",
+    "test": "cross-env NODE_ENV=test karma start --single-run",
+    "tdd": "cross-env NODE_ENV=test karma start",
     "clean": "rimraf ./lib/*",
     "copy": "cpy ./README.md ./lib",
-    "build": "babel src --out-dir lib && npm run copy",
+    "build": "npm run build:cjs && npm run build:es && npm run copy",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir lib/es",
     "lint": "eslint src",
     "release": "release"
   },
@@ -42,9 +45,10 @@
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-latest": "^6.16.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.17.0",
     "cpy-cli": "^1.0.1",
+    "cross-env": "^5.1.1",
     "es5-shim": "^4.5.9",
     "eslint": "^3.7.1",
     "eslint-config-jason": "^4.0.0",
