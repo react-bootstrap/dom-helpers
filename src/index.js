@@ -7,10 +7,10 @@ import ownerDocument from './ownerDocument'
 import ownerWindow from './ownerWindow'
 import requestAnimationFrame from './util/requestAnimationFrame';
 
+export * from './events'
+export * from './query'
 export {
   style,
-  events,
-  query,
   activeElement,
   ownerDocument,
   ownerWindow,
