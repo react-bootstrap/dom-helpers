@@ -87,4 +87,5 @@ Each level of the module can be required as a whole or you can drill down for a 
     - util
         + `requestAnimationFrame(cb)` returns an ID for canceling
             * `requestAnimationFrame.cancel(id)`
+        + `scrollbarSize([recalc])` returns the scrollbar's width size in pixels
         + `scrollTo(element, [scrollParent])`
