@@ -1,4 +1,3 @@
-
 let rUpper = /([A-Z])/g;
 
 export default function hyphenate(string) {

@@ -1,9 +1,8 @@
-'use strict';
 function replaceClassName(origClass, classToRemove) {
   return origClass.replace(new RegExp('(^|\\s)' + classToRemove + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
 }
 
-module.exports = function removeClass(element, className){
+export default function removeClass(element, className){
   if ( element.classList)
     element.classList.remove(className)
   else if (typeof element.className === 'string')

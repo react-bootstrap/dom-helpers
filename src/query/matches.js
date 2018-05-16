@@ -1,4 +1,3 @@
-
 import canUseDOM from '../util/inDOM'
 import qsa from './querySelectorAll'
 
