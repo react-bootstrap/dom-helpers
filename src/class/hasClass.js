@@ -1,4 +1,3 @@
-
 export default function hasClass(element, className) {
   if ( element.classList)
     return !!className && element.classList.contains(className)

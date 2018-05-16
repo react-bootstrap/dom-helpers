@@ -1,4 +1,3 @@
-
 export default function getWindow(node) {
   return node === node.window
     ? node
