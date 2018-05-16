@@ -1,0 +1,11 @@
+{
+  "dist/dom-helpers.esm.js": {
+    "bundled": 15436,
+    "minified": 8760,
+    "gzipped": 3104,
+    "treeshaked": {
+      "rollup": 6895,
+      "webpack": 7461
+    }
+  }
+}
