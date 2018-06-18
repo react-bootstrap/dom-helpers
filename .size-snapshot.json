@@ -1,0 +1,7 @@
+{
+  "dist/dom-helpers.umd.js": {
+    "bundled": 16970,
+    "minified": 7460,
+    "gzipped": 2962
+  }
+}
