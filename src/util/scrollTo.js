@@ -2,7 +2,7 @@ import getOffset from '../query/offset'
 import height from '../query/height'
 import getScrollParent from '../query/scrollParent'
 import scrollTop from '../query/scrollTop'
-import raf from './requestAnimationFrame'
+import { raf } from './animationFrame'
 import getWindow from '../query/isWindow'
 
 export default function scrollTo(selected, scrollParent) {

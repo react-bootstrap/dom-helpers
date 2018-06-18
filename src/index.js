@@ -5,7 +5,7 @@ import query from './query'
 import activeElement from './activeElement'
 import ownerDocument from './ownerDocument'
 import ownerWindow from './ownerWindow'
-import requestAnimationFrame from './util/requestAnimationFrame';
+import { raf, caf } from './util/animationFrame';
 
 export * from './events'
 export * from './query'
@@ -14,7 +14,8 @@ export {
   activeElement,
   ownerDocument,
   ownerWindow,
-  requestAnimationFrame,
+  raf,
+  caf
 }
 
 export default {
@@ -24,5 +25,6 @@ export default {
   activeElement,
   ownerDocument,
   ownerWindow,
-  requestAnimationFrame,
+  raf,
+  caf
 }

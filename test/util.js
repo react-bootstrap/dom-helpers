@@ -1,4 +1,4 @@
-var raf = require('../src/util/requestAnimationFrame')
+var { raf } = require('../src/util/animationFrame')
 var scrollbarSize = require('../src/util/scrollbarSize')
 
 describe('utils', () => {

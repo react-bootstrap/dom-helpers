@@ -2,7 +2,7 @@ import canUseDOM from './inDOM'
 
 let vendors = ['', 'webkit', 'moz', 'o', 'ms']
 let cancel = 'clearTimeout'
-let raf    = fallback
+let rafImpl    = fallback
 let compatRaf
 
 let getKey = (vendor, k) =>
@@ -14,7 +14,7 @@ if (canUseDOM) {
 
     if (rafKey in window) {
       cancel = getKey(vendor, 'cancel')
-      return raf = cb => window[rafKey](cb)
+      return rafImpl = cb => window[rafKey](cb)
     }
   })
 }
@@ -30,8 +30,7 @@ function fallback(fn) {
   return req;
 }
 
-compatRaf = cb => raf(cb)
-compatRaf.cancel = id => {
+export let raf = cb => rafImpl(cb)
+export let caf = id => {
   window[cancel] && typeof window[cancel] === 'function' && window[cancel](id);
 }
-export default compatRaf
