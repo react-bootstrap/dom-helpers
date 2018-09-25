@@ -24,11 +24,11 @@ module.exports = function (config) {
 
     logLevel: config.LOG_INFO,
 
-    browsers: [ isCI ? 'ChromeTravisCI' : 'Chrome', 'Firefox' ],
+    browsers: [ isCI ? 'ChromeTravisCI' : 'HeadlessChrome', 'Firefox' ],
 
     customLaunchers: {
-      ChromeTravisCI: {
-        base: 'Chrome',
+      HeadlessChrome: {
+        base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       }
     },
