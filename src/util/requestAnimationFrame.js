@@ -6,11 +6,11 @@ let raf    = fallback
 let compatRaf
 
 let getKey = (vendor, k) =>
-  vendor + (!vendor  ? k :(k[0].toUpperCase() + k.substr(1))) + 'AnimationFrame'
+  `${vendor + (!vendor  ? k :(k[0].toUpperCase() + k.substr(1)))  }AnimationFrame`
 
 if (canUseDOM) {
   vendors.some(vendor => {
-    var rafKey = getKey(vendor, 'request')
+    let rafKey = getKey(vendor, 'request')
 
     if (rafKey in window) {
       cancel = getKey(vendor, 'cancel')
@@ -22,7 +22,7 @@ if (canUseDOM) {
 /* https://github.com/component/raf */
 let prev = new Date().getTime();
 function fallback(fn) {
-  var curr = new Date().getTime()
+  let curr = new Date().getTime()
     , ms = Math.max(0, 16 - (curr - prev))
     , req = setTimeout(fn, ms)
 

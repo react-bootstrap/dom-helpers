@@ -7,11 +7,11 @@ export default (function(){
     ? function(context, node){
         if (context.contains) {
           return context.contains(node);
-        } else if (context.compareDocumentPosition){
+        } if (context.compareDocumentPosition){
           return context === node || !!(context.compareDocumentPosition(node) & 16);
-        } else {
-          return fallback(context, node);
         }
+          return fallback(context, node);
+
       }
     : fallback;
 })()

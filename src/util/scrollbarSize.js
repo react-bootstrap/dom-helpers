@@ -5,7 +5,7 @@ let size;
 export default function scrollbarSize(recalc) {
   if ((!size && size !== 0) || recalc) {
     if (canUseDOM) {
-      var scrollDiv = document.createElement('div');
+      let scrollDiv = document.createElement('div');
 
       scrollDiv.style.position = 'absolute';
       scrollDiv.style.top = '-9999px';

@@ -3,7 +3,7 @@ import getWindow from './isWindow'
 import ownerDocument from '../ownerDocument'
 
 export default function offset(node) {
-  var doc = ownerDocument(node)
+  let doc = ownerDocument(node)
     , win = getWindow(doc)
     , docElem = doc && doc.documentElement
     , box = { top: 0, left: 0, height: 0, width: 0 };

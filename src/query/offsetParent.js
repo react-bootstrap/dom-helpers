@@ -6,7 +6,7 @@ function nodeName(node) {
 }
 
 export default function offsetParent(node) {
-  var doc = ownerDocument(node)
+  let doc = ownerDocument(node)
     , offsetParent = node && node.offsetParent;
 
   while (offsetParent && nodeName(node) !== 'html' && css(offsetParent, 'position') === 'static' ) {

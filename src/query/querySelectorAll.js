@@ -5,7 +5,7 @@ let simpleSelectorRE = /^[\w-]*$/
 let toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
 
 export default function qsa(element, selector) {
-  var maybeID    = selector[0] === '#'
+  let maybeID    = selector[0] === '#'
     , maybeClass = selector[0] === '.'
     , nameOnly   = (maybeID || maybeClass) ? selector.slice(1) : selector
     , isSimple   = simpleSelectorRE.test(nameOnly)

@@ -2,7 +2,7 @@ import css from '../style'
 import height  from './height'
 
 export default function scrollPrarent(node){
-  var position = css(node, 'position')
+  let position = css(node, 'position')
     , excludeStatic = position === 'absolute'
     , ownerDoc = node.ownerDocument;
 
@@ -11,7 +11,7 @@ export default function scrollPrarent(node){
 
   while ( (node = node.parentNode) && node.nodeType !== 9){
 
-    var isStatic = excludeStatic && css(node, 'position' ) === 'static'
+    let isStatic = excludeStatic && css(node, 'position' ) === 'static'
       , style    = css(node, 'overflow')
                  + css(node, 'overflow-y')
                  + css(node, 'overflow-x');

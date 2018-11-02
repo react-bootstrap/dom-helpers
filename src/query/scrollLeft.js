@@ -1,7 +1,7 @@
 import getWindow from './isWindow'
 
 export default function scrollTop(node, val){
-  var win = getWindow(node);
+  let win = getWindow(node);
 
   if ( val === undefined )
     return win

@@ -8,9 +8,9 @@ if (canUseDOM) {
       return (node, eventName, handler, capture) =>
           node.addEventListener(eventName, handler, capture || false);
 
-    else if (document.attachEvent)
+    if (document.attachEvent)
       return (node, eventName, handler) =>
-          node.attachEvent('on' + eventName, (e) => {
+          node.attachEvent(`on${  eventName}`, (e) => {
             e = e || window.event;
             e.target = e.target || e.srcElement;
             e.currentTarget = node;

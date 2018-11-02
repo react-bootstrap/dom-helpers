@@ -5,15 +5,15 @@ let rnumnonpx = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(?!px)[a-z%]+$/i;
 
 export default function _getComputedStyle(node) {
   if (!node) throw new TypeError('No Element passed to `getComputedStyle()`')
-  var doc = node.ownerDocument;
+  let doc = node.ownerDocument;
 
   return 'defaultView' in doc
     ? doc.defaultView.opener
       ? node.ownerDocument.defaultView.getComputedStyle( node, null )
       : window.getComputedStyle(node, null)
-    : { //ie 8 "magic" from: https://github.com/jquery/jquery/blob/1.11-stable/src/css/curCSS.js#L72
+    : { // ie 8 "magic" from: https://github.com/jquery/jquery/blob/1.11-stable/src/css/curCSS.js#L72
         getPropertyValue(prop) {
-          var style = node.style;
+          let style = node.style;
 
           prop = camelize(prop)
 
@@ -35,7 +35,7 @@ export default function _getComputedStyle(node) {
               runStyle.left = node.currentStyle.left;
 
             style.left = prop === 'fontSize' ? '1em' : current;
-            current = style.pixelLeft + 'px';
+            current = `${style.pixelLeft  }px`;
 
             // Revert the changed values
             style.left = left;

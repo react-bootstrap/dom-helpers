@@ -9,7 +9,7 @@ function nodeName(node) {
 }
 
 export default function position(node, offsetParent){
-  var parentOffset = { top: 0, left: 0 }
+  let parentOffset = { top: 0, left: 0 }
     , offset;
 
   // Fixed elements are offset from window (parentOffset = {top:0, left: 0},

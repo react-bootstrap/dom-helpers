@@ -1,21 +1,16 @@
-'use strict';
+'use strict'
 
-var isCI = process.env.CONTINUOUS_INTEGRATION === 'true';
+var isCI = process.env.CONTINUOUS_INTEGRATION === 'true'
 
-module.exports = function (config) {
-
+module.exports = function(config) {
   config.set({
-
     basePath: '',
 
     frameworks: ['mocha', 'sinon'],
 
     reporters: ['mocha'],
 
-    files: [
-      'test/fixtures/*.html',
-      'test.js'
-    ],
+    files: ['test/fixtures/*.html', 'test.js'],
 
     port: 9876,
     colors: true,
@@ -24,18 +19,18 @@ module.exports = function (config) {
 
     logLevel: config.LOG_INFO,
 
-    browsers: [ isCI ? 'ChromeTravisCI' : 'Chrome', 'Firefox' ],
+    browsers: [isCI ? 'ChromeTravisCI' : 'Chrome', 'Firefox'],
 
     customLaunchers: {
       ChromeTravisCI: {
         base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
+        flags: ['--no-sandbox'],
+      },
     },
 
     preprocessors: {
       'test/fixtures/*.html': 'html2js',
-      'test.js': ['webpack', 'sourcemap']
+      'test.js': ['webpack', 'sourcemap'],
     },
 
     webpack: {
@@ -43,19 +38,18 @@ module.exports = function (config) {
 
       entry: __dirname + '/test.js',
       module: {
-        loaders: [
+        rules: [
           {
-            test:    /.js$/,
-            loader:  'babel-loader',
-            exclude: /node_modules/
-          }
-        ]
-      }
+            test: /.js$/,
+            exclude: /node_modules/,
+            use: 'babel-loader',
+          },
+        ],
+      },
     },
 
     webpackServer: {
-      noInfo: true
-    }
-
-  });
-};
+      noInfo: true,
+    },
+  })
+}

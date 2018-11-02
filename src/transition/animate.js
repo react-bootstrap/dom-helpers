@@ -43,8 +43,8 @@ function _animate({ node, properties, duration = 200, easing, callback }) {
 
   if (duration > 0) {
     cssValues[transitionProps.property] = cssProperties.join(', ')
-    cssValues[transitionProps.duration] = (duration / 1000) + 's'
-    cssValues[transitionProps.delay]    = 0 + 's'
+    cssValues[transitionProps.duration] = `${duration / 1000  }s`
+    cssValues[transitionProps.delay]    = `${0  }s`
     cssValues[transitionProps.timing]   = easing || 'linear'
 
     on(node, transitionProps.end, done)
@@ -54,7 +54,7 @@ function _animate({ node, properties, duration = 200, easing, callback }) {
     }, duration + 500)
   }
 
-  //eslint-disable-next-line no-unused-expressions
+  // eslint-disable-next-line no-unused-expressions
   node.clientLeft // trigger page reflow
 
   css(node, cssValues)

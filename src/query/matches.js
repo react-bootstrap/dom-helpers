@@ -24,7 +24,7 @@ export default function matches(node, selector) {
 }
 
 function ie8MatchesSelector(node, selector) {
-  var matches = qsa(node.document || node.ownerDocument, selector)
+  let matches = qsa(node.document || node.ownerDocument, selector)
     , i = 0;
 
   while (matches[i] && matches[i] !== node) i++;

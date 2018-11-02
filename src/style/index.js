@@ -14,9 +14,9 @@ export default function style(node, property, value) {
     if (value === undefined) {
       return node.style[camelize(property)]
           || _getComputedStyle(node).getPropertyValue(hyphenate(property))
-    } else {
-      (props = {})[property] = value
     }
+      (props = {})[property] = value
+
   }
 
   Object.keys(props).forEach(key => {
@@ -36,5 +36,5 @@ export default function style(node, property, value) {
     css += `${transform}: ${transforms};`
   }
 
-  node.style.cssText += ';' + css
+  node.style.cssText += `;${  css}`
 }

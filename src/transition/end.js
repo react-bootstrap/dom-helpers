@@ -2,7 +2,7 @@ import transition from './properties'
 import style from '../style'
 
 function onEnd(node, handler, duration) {
-  var fakeEvent = {
+  let fakeEvent = {
         target:        node,
         currentTarget: node
       }
@@ -36,7 +36,7 @@ onEnd._parseDuration = parseDuration
 export default onEnd;
 
 function parseDuration(node){
-  var str = style(node, transition.duration)
+  let str = style(node, transition.duration)
     , mult = str.indexOf('ms') === -1 ? 1000 : 1
 
   return parseFloat(str) * mult

@@ -7,9 +7,9 @@ if (canUseDOM) {
       return (node, eventName, handler, capture) =>
           node.removeEventListener(eventName, handler, capture || false);
 
-    else if (document.attachEvent)
+    if (document.attachEvent)
       return (node, eventName, handler) =>
-          node.detachEvent('on' + eventName, handler);
+          node.detachEvent(`on${  eventName}`, handler);
   })();
 }
 

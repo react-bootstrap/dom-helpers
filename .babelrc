@@ -1,4 +1,3 @@
 {
-  "presets": ["latest", "stage-3"],
-  "plugins": ["add-module-exports"]
+  "presets": ["@react-bootstrap/babel-preset"]
 }

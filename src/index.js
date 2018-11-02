@@ -1,4 +1,4 @@
-'use strict';
+
 import style from './style'
 import events from './events'
 import query from './query'
