@@ -62,6 +62,7 @@ Each level of the module can be required as a whole or you can drill down for a 
         - `addClass(element, className)`
         - `removeClass(element, className)`
         - `hasClass(element, className)`
+        - `toggleClass(element, className, [force])`
     - `style(element, propName, [value])` or `style(element, objectOfPropValues)`
         + `removeStyle(element, styleName)`
         + `getComputedStyle(element)` -> `getPropertyValue(name)`
