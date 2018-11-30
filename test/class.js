@@ -48,4 +48,14 @@ describe('Class helpers', () => {
     expect(cls.hasClass(document.getElementById('item-2'), 'test-class')).to.equal(true)
     expect(cls.hasClass(document.getElementById('item-1'), 'test-class')).to.equal(false)
   })
+
+  it('should toggle class', () => {
+    var el = document.getElementById('item-1')
+    removeProperty('classList', el)
+
+    cls.toggleClass(el, 'test-class')
+    expect(cls.hasClass(el, 'test-class')).to.equal(true)
+    cls.toggleClass(el, 'test-class')
+    expect(cls.hasClass(el, 'test-class')).to.equal(false)
+  })
 })
