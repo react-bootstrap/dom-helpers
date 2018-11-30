@@ -57,13 +57,5 @@ describe('Class helpers', () => {
     expect(cls.hasClass(el, 'test-class')).to.equal(true)
     cls.toggleClass(el, 'test-class')
     expect(cls.hasClass(el, 'test-class')).to.equal(false)
-
-    cls.addClass(el, 'test-class')
-    cls.toggleClass(el, 'test-class', true)
-    expect(cls.hasClass(el, 'test-class')).to.equal(true)
-
-    cls.removeClass(el, 'test-class')
-    cls.toggleClass(el, 'test-class', false)
-    expect(cls.hasClass(el, 'test-class')).to.equal(false)
   })
 })
