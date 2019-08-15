@@ -1,4 +1,4 @@
-var { parseDuration } = require('../src/transition/end')
+var { parseDuration } = require('../src/transitionEnd')
 
 describe('Transition helpers', () => {
   it('should parse duration from node property', () => {

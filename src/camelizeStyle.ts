@@ -4,9 +4,12 @@
  * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/camelizeStyleName.js
  */
 import camelize from './camelize'
+import { CamelProperty, Property } from './types'
 
 let msPattern = /^-ms-/
 
-export default function camelizeStyleName(string: string) {
-  return camelize(string.replace(msPattern, 'ms-'))
+export default function camelizeStyleName<T extends string = Property>(
+  string: T
+): CamelProperty {
+  return camelize(string.replace(msPattern, 'ms-')) as CamelProperty
 }

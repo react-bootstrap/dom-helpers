@@ -1,9 +1,10 @@
-import off from '../events/off'
-import on, { EventHandler } from '../events/on'
-import css, { Property } from '../style'
-import hyphenate from '../util/hyphenate'
-import { TRANSITION_SUPPORTED, emulateTransitionEnd } from './end'
+import css from './css'
+import hyphenate from './hyphenate'
 import isTransform, { TransformValue } from './isTransform'
+import off from './off'
+import on, { EventHandler } from './on'
+import { TRANSITION_SUPPORTED, emulateTransitionEnd } from './transitionEnd'
+import { Property } from './types'
 
 let reset: Partial<Record<Property, string>> = {
   transition: '',

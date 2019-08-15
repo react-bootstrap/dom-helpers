@@ -1,5 +1,5 @@
-import ownerDocument from '../ownerDocument'
-import css from '../style'
+import css from './css'
+import ownerDocument from './ownerDocument'
 
 function nodeName(node: Element): string {
   return node.nodeName && node.nodeName.toLowerCase()

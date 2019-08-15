@@ -1,12 +1,8 @@
-import canUseDOM from './inDOM'
+import canUseDOM from './canUseDOM'
 
 type Vendor = '' | 'webkit' | 'moz' | 'o' | 'ms'
 
 type RequestAnimationFrame = typeof requestAnimationFrame
-
-interface CompatRequestAnimationFrame extends RequestAnimationFrame {
-  cancel(id: number): void
-}
 
 /* https://github.com/component/raf */
 let prev = new Date().getTime()
@@ -20,8 +16,8 @@ function fallback(fn: FrameRequestCallback): number {
 }
 
 let vendors = ['', 'webkit', 'moz', 'o', 'ms'] as Vendor[]
-let cancel = 'clearTimeout'
-let raf: typeof requestAnimationFrame = fallback
+let cancelMethod = 'clearTimeout'
+let rafImpl: RequestAnimationFrame = fallback
 
 // eslint-disable-next-line import/no-mutable-exports
 
@@ -30,25 +26,20 @@ let getKey = (vendor: Vendor, k: string) =>
 
 if (canUseDOM) {
   vendors.some(vendor => {
-    let rafKey = getKey(vendor, 'request')
+    let rafMethod = getKey(vendor, 'request')
 
-    if (rafKey in window) {
-      cancel = getKey(vendor, 'cancel')
+    if (rafMethod in window) {
+      cancelMethod = getKey(vendor, 'cancel')
       // @ts-ignore
-      raf = cb => window[rafKey](cb)
+      rafImpl = cb => window[rafMethod](cb)
     }
-    return raf
+    return !!rafImpl
   })
 }
 
-const compatRaf: CompatRequestAnimationFrame = Object.assign(
-  (cb: FrameRequestCallback) => raf(cb),
-  {
-    cancel(id: number) {
-      // @ts-ignore
-      if (typeof window[cancel] === 'function') window[cancel](id)
-    },
-  }
-)
+export const cancel = (id: number) => {
+  // @ts-ignore
+  if (typeof window[cancelMethod] === 'function') window[cancelMethod](id)
+}
 
-export default compatRaf
+export const request = rafImpl

@@ -1,4 +1,4 @@
-import style from '../style'
+import style from './css'
 
 export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
 
@@ -35,7 +35,11 @@ export function emulateTransitionEnd(
   }, emulatedDuration)
 }
 
-function onEnd(node: HTMLElement, handler: Listener, duration?: number) {
+function transitionEnd(
+  node: HTMLElement,
+  handler: Listener,
+  duration?: number
+) {
   if (!TRANSITION_SUPPORTED) {
     emulateTransitionEnd(node, 0, 0)
     return
@@ -48,4 +52,4 @@ function onEnd(node: HTMLElement, handler: Listener, duration?: number) {
   emulateTransitionEnd(node, duration)
 }
 
-export default onEnd
+export default transitionEnd

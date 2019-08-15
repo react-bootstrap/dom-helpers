@@ -1,16 +1,12 @@
 import * as CSS from 'csstype'
-import isTransform from '../transition/isTransform'
-import camelize from '../util/camelizeStyle'
-import hyphenate from '../util/hyphenateStyle'
+import camelize from './camelizeStyle'
 import getComputedStyle from './getComputedStyle'
+import hyphenate from './hyphenateStyle'
+import isTransform from './isTransform'
 import removeStyle from './removeStyle'
+import { CamelProperty, HyphenProperty, Property } from './types'
 
 type Styles = keyof CSSStyleDeclaration
-
-export type HyphenProperty = keyof CSS.PropertiesHyphen
-export type CamelProperty = keyof CSS.Properties
-
-export type Property = HyphenProperty | CamelProperty
 
 function style(
   node: HTMLElement,

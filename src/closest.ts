@@ -6,8 +6,9 @@ export default function closest(
   node: Element,
   selector: string,
   context: Element
-) {
+): Element | undefined {
   while (node && (isDoc(node) || !matches(node, selector))) {
+    // @ts-ignore
     node = node !== context && !isDoc(node) ? node.parentNode : undefined
   }
   return node

@@ -1,6 +1,6 @@
-import contains from '../query/contains'
-import qsa from '../query/querySelectorAll'
+import contains from './contains'
 import { EventHandler } from './on'
+import qsa from './querySelectorAll'
 
 export default function filterEvents<K extends keyof HTMLElementEventMap>(
   selector: string,

@@ -1,4 +1,4 @@
-import canUseDOM from '../util/inDOM'
+import canUseDOM from './canUseDOM'
 import { EventHandler, noop } from './on'
 
 const off = (function $off() {

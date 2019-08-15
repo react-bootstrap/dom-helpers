@@ -1,4 +1,4 @@
-import css from '../style'
+import css from './css'
 import getOffset from './offset'
 import getOffsetParent from './offsetParent'
 import scrollLeft from './scrollLeft'

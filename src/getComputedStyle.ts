@@ -1,20 +1,21 @@
-import camelize from '../util/camelizeStyle'
+import camelize from './camelizeStyle'
+import ownerWindow from './ownerWindow'
+import { Property } from './types'
 
 let rposition = /^(top|right|bottom|left)$/
 let rnumnonpx = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(?!px)[a-z%]+$/i
 
 export default function _getComputedStyle(node: HTMLElement) {
   if (!node) throw new TypeError('No Element passed to `getComputedStyle()`')
-  let doc = node.ownerDocument
+  let window = ownerWindow(node)
 
-  return 'defaultView' in doc
-    ? doc.defaultView.opener
-      ? node.ownerDocument.defaultView.getComputedStyle(node, null)
-      : window.getComputedStyle(node, null)
+  return 'getComputedStyle' in window
+    ? window.getComputedStyle(node, null)
     : // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
       ({
         // ie 8 "magic" from: https://github.com/jquery/jquery/blob/1.11-stable/src/css/curCSS.js#L72
-        getPropertyValue(prop) {
+        getPropertyValue(property: Property) {
+          let prop: string = property as string
           let style = node.style
 
           prop = camelize(prop)
@@ -22,7 +23,7 @@ export default function _getComputedStyle(node: HTMLElement) {
           if (prop === 'float') prop = 'styleFloat'
           // @ts-ignore
           let current = node.currentStyle[prop] || null
-
+          // @ts-ignore
           if (current == null && style && style[prop]) current = style[prop]
 
           if (rnumnonpx.test(current) && !rposition.test(prop)) {

@@ -1,30 +1,30 @@
-var $ = require('jquery');
-var css = require('../src/style')
-var _getComputedStyle = require('../src/style/getComputedStyle')
+var $ = require('jquery')
+var css = require('../src/css')
+var _getComputedStyle = require('../src/getComputedStyle')
 
-let style;
+let style
 
-function injectCss(rules){
-  if (style) reset();
-  style = $('<style>' + rules + '</style>');
-  style.appendTo('head');
+function injectCss(rules) {
+  if (style) reset()
+  style = $('<style>' + rules + '</style>')
+  style.appendTo('head')
 }
 
-function reset(){
-  if ( style ) {
-    style.remove();
+function reset() {
+  if (style) {
+    style.remove()
   }
-  style = null;
+  style = null
 }
 
 describe('style', () => {
-  let container;
+  let container
 
-  beforeEach(()=>{
-    container = $('<div/>');
-    container.attr('id', 'container');
-    container.appendTo('body');
-    container = container[0];
+  beforeEach(() => {
+    container = $('<div/>')
+    container.attr('id', 'container')
+    container.appendTo('body')
+    container = container[0]
 
     injectCss(`
       body {
@@ -35,25 +35,27 @@ describe('style', () => {
         padding-right: 20px;
         margin-left: 1em;
       }
-    `);
-  });
+    `)
+  })
 
-  afterEach(()=>{
-    $(container).remove();
-    container = null;
+  afterEach(() => {
+    $(container).remove()
+    container = null
     reset()
-  });
+  })
 
   it('should get computed style', () => {
     expect(
-      _getComputedStyle(container).getPropertyValue('margin-left')).to.equal('16px');
+      _getComputedStyle(container).getPropertyValue('margin-left')
+    ).to.equal('16px')
 
     expect(
-      _getComputedStyle(container).getPropertyValue('padding-right')).to.equal('20px');
+      _getComputedStyle(container).getPropertyValue('padding-right')
+    ).to.equal('20px')
   })
 
   it('should get style', () => {
-    expect(css(container, 'margin-left')).to.equal('16px');
+    expect(css(container, 'margin-left')).to.equal('16px')
     expect(css(container, 'paddingRight')).to.equal('20px')
     expect(css(container, 'padding-right')).to.equal('20px')
   })

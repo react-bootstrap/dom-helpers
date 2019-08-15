@@ -1,5 +1,5 @@
-import ownerDocument from '../ownerDocument'
-import canUseDOM from '../util/inDOM'
+import canUseDOM from './canUseDOM'
+import ownerDocument from './ownerDocument'
 import qsa from './querySelectorAll'
 
 let matchesCache: (node: Element, selector: string) => boolean

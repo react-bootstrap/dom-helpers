@@ -8,7 +8,9 @@
   },
   "repository": "jquense/dom-helpers",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/cjs/index.js",
+  "types": "lib/cjs/index.d.ts",
+  "module": "lib/esm/index.js",
   "keywords": [
     "dom-helpers",
     "react-component",
@@ -27,8 +29,9 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "build": "4c build",
-    "lint": "eslint src",
+    "build:pick": "cherry-pick --name=dom-helpers --cwd=lib --input-dir=../src --cjs-dir=cjs --esm-dir=esm",
+    "build": "rimraf lib && 4c build src",
+    "lint": "tsc -p ./ --noEmit && eslint src",
     "release": "rollout"
   },
   "release": {
@@ -48,6 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
+    "cherry-pick": "^0.4.0",
     "cpy-cli": "^2.0.0",
     "eslint": "^5.8.0",
     "eslint-config-4catalyzer-typescript": "^0.12.4",

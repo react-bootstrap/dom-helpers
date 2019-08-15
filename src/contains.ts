@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise, no-cond-assign */
-import canUseDOM from '../util/inDOM'
+import canUseDOM from './canUseDOM'
 
 function fallback(context: Element, node: Element) {
   if (node)

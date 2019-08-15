@@ -1,5 +1,5 @@
-import ownerDocument from '../ownerDocument'
 import contains from './contains'
+import ownerDocument from './ownerDocument'
 import scrollLeft from './scrollLeft'
 import scrollTop from './scrollTop'
 

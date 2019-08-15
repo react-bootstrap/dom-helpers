@@ -1,5 +1,5 @@
 /* eslint-disable import/no-mutable-exports */
-import canUseDOM from '../util/inDOM'
+import canUseDOM from './canUseDOM'
 
 export type EventHandler<K extends keyof HTMLElementEventMap> = (
   this: HTMLElement,

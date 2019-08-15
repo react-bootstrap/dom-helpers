@@ -1,4 +1,4 @@
-import canUseDOM from './inDOM'
+import canUseDOM from './canUseDOM'
 
 let size: number
 
