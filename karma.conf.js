@@ -1,8 +1,8 @@
 'use strict'
 
-var isCI = process.env.CONTINUOUS_INTEGRATION === 'true'
+const isCI = process.env.CONTINUOUS_INTEGRATION === 'true'
 
-module.exports = function(config) {
+module.exports = config => {
   config.set({
     basePath: '',
 
@@ -34,17 +34,21 @@ module.exports = function(config) {
     },
 
     webpack: {
+      mode: 'development',
       devtool: 'inline-source-map',
 
-      entry: __dirname + '/test.js',
+      entry: `${__dirname}/test.js`,
       module: {
         rules: [
           {
-            test: /.js$/,
+            test: /.(j|t)s$/,
             exclude: /node_modules/,
             use: 'babel-loader',
           },
         ],
+      },
+      resolve: {
+        extensions: ['.mjs', '.js', '.ts', '.tsx', '.json'],
       },
     },
 

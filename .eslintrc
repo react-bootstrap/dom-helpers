@@ -1,3 +1,7 @@
 {
-  "extends": "jason"
+  "extends": ["@react-bootstrap", "@react-bootstrap/eslint-config-typescript"],
+  "rules": {
+    "no-nested-ternary": "off",
+    "consistent-return": "off"
+  }
 }

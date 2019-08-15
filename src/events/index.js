@@ -1,7 +1,7 @@
-import on from './on'
-import off from './off'
-import filter from './filter'
+import filter from './filterEventHandler'
 import listen from './listen'
+import off from './off'
+import on from './on'
 
 export { on, off, filter, listen }
 export default { on, off, filter, listen }
