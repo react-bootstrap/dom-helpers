@@ -1,6 +1,6 @@
 import matches from './matches'
 
-let isDoc = (obj: any) => obj != null && obj.nodeType === 9
+let isDoc = (obj: any) => obj != null && obj.nodeType === document.DOCUMENT_NODE
 
 export default function closest(
   node: Element,

@@ -11,7 +11,7 @@ export default function scrollPrarent(node: HTMLElement) {
   if (position === 'fixed') return ownerDoc || document
 
   // @ts-ignore
-  while ((node = node.parentNode) && node.nodeType !== 9) {
+  while ((node = node.parentNode) && node.nodeType !== document.DOCUMENT_NODE) {
     let isStatic = excludeStatic && css(node, 'position') === 'static',
       style =
         (css(node, 'overflow') || '') +
