@@ -1,19 +1,18 @@
-var cls = require('../src/class')
+var cls = require('../src')
 
 function removeProperty(property, element) {
   Object.defineProperty(element, property, {
-    value: undefined
+    value: undefined,
   })
 }
 
 describe('Class helpers', () => {
-
-  beforeEach(()=>{
+  beforeEach(() => {
     document.body.innerHTML = window.__html__['test/fixtures/class.html']
   })
 
   it('should add a class', () => {
-    var el = document.getElementById('item-1');
+    var el = document.getElementById('item-1')
 
     cls.addClass(el, 'my-class')
 
@@ -37,7 +36,7 @@ describe('Class helpers', () => {
   })
 
   it('should remove a class', () => {
-    var el = document.getElementById('item-2');
+    var el = document.getElementById('item-2')
 
     cls.removeClass(el, 'test-class')
 
@@ -45,8 +44,12 @@ describe('Class helpers', () => {
   })
 
   it('should check for a class', () => {
-    expect(cls.hasClass(document.getElementById('item-2'), 'test-class')).to.equal(true)
-    expect(cls.hasClass(document.getElementById('item-1'), 'test-class')).to.equal(false)
+    expect(
+      cls.hasClass(document.getElementById('item-2'), 'test-class')
+    ).to.equal(true)
+    expect(
+      cls.hasClass(document.getElementById('item-1'), 'test-class')
+    ).to.equal(false)
   })
 
   it('should toggle class', () => {

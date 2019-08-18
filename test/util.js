@@ -1,25 +1,24 @@
-var raf = require('../src/util/requestAnimationFrame')
-var scrollbarSize = require('../src/util/scrollbarSize')
+var { request, cancel } = require('../src/animationFrame')
+var scrollbarSize = require('../src/scrollbarSize')
 
 describe('utils', () => {
-
   describe('requestAnimationFrame', () => {
-
     it('should find api', done => {
-      raf(() => done())
+      request(() => done())
     })
 
     it('should cancel', done => {
-      var id = raf(() => { throw new Error() })
+      var id = request(() => {
+        throw new Error()
+      })
 
-      raf.cancel(id)
+      cancel(id)
 
       setTimeout(() => done(), 30)
     })
   })
 
   describe('scrollbarSize', () => {
-
     it('should return a size', () => {
       expect(scrollbarSize()).to.be.a('number')
     })

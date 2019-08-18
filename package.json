@@ -8,7 +8,9 @@
   },
   "repository": "jquense/dom-helpers",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/cjs/index.js",
+  "types": "lib/cjs/index.d.ts",
+  "module": "lib/esm/index.js",
   "keywords": [
     "dom-helpers",
     "react-component",
@@ -27,8 +29,9 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "build": "babel src --out-dir lib --delete-dir-on-start",
-    "lint": "eslint src",
+    "build:pick": "cherry-pick --name=dom-helpers --cwd=lib --input-dir=../src --cjs-dir=cjs --esm-dir=esm",
+    "build": "rimraf lib && 4c build src",
+    "lint": "tsc -p ./ --noEmit && eslint src",
     "release": "rollout"
   },
   "release": {
@@ -36,16 +39,25 @@
     "conventionalCommits": true
   },
   "devDependencies": {
+    "@4c/build": "^1.2.0",
     "@4c/rollout": "^1.2.0",
+    "@4c/tsconfig": "^0.1.2",
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
+    "@babel/preset-typescript": "^7.3.3",
     "@react-bootstrap/babel-preset": "^1.1.2",
+    "@react-bootstrap/eslint-config": "^1.2.0",
+    "@react-bootstrap/eslint-config-typescript": "^1.1.0",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
+    "cherry-pick": "^0.4.0",
     "cpy-cli": "^2.0.0",
     "eslint": "^5.8.0",
-    "eslint-config-jason": "^4.0.0",
+    "eslint-config-4catalyzer-typescript": "^0.12.4",
     "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
     "expect.js": "^0.3.1",
     "get-saucelabs-browsers": "^1.0.1",
     "jquery": "^3.3.1",
@@ -61,11 +73,14 @@
     "karma-webpack": "^3.0.5",
     "mocha": "^5.2.0",
     "rimraf": "^2.2.8",
+    "rollout": "^0.1.0",
     "simulant": "^0.2.2",
     "sinon": "^7.1.1",
+    "typescript": "^3.5.3",
     "webpack": "^4.23.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.2"
+    "@babel/runtime": "^7.1.2",
+    "csstype": "^2.6.6"
   }
 }
