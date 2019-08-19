@@ -29,6 +29,7 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
+    "check:size": "rollup -c",
     "build:pick": "cherry-pick --name=dom-helpers --cwd=lib --input-dir=../src --cjs-dir=cjs --esm-dir=esm",
     "build": "rimraf lib && 4c build src",
     "lint": "tsc -p ./ --noEmit && eslint src",
@@ -74,6 +75,9 @@
     "mocha": "^5.2.0",
     "rimraf": "^2.2.8",
     "rollout": "^0.1.0",
+    "rollup": "^1.19.4",
+    "rollup-plugin-size-snapshot": "^0.10.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "simulant": "^0.2.2",
     "sinon": "^7.1.1",
     "typescript": "^3.5.3",
