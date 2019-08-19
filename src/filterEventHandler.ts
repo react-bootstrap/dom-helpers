@@ -1,5 +1,5 @@
+import { EventHandler } from './addEventListener'
 import contains from './contains'
-import { EventHandler } from './on'
 import qsa from './querySelectorAll'
 
 export default function filterEvents<K extends keyof HTMLElementEventMap>(

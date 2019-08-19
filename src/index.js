@@ -1,5 +1,6 @@
 import activeElement from './activeElement'
 import addClass from './addClass'
+import addEventListener from './addEventListener'
 import {
   cancel as cancelAnimationFrame,
   request as requestAnimationFrame,
@@ -12,23 +13,22 @@ import hasClass from './hasClass'
 import height from './height'
 import listen from './listen'
 import matches from './matches'
-import off from './off'
 import offset from './offset'
 import offsetParent from './offsetParent'
-import on from './on'
 import ownerDocument from './ownerDocument'
 import ownerWindow from './ownerWindow'
 import position from './position'
 import querySelectorAll from './querySelectorAll'
 import removeClass from './removeClass'
+import removeEventListener from './removeEventListener'
 import scrollParent from './scrollParent'
 import scrollTop from './scrollTop'
 import toggleClass from './toggleClass'
 import width from './width'
 
 export {
-  on,
-  off,
+  addEventListener,
+  removeEventListener,
   filter,
   listen,
   style,
@@ -55,8 +55,8 @@ export {
 }
 
 export default {
-  on,
-  off,
+  addEventListener,
+  removeEventListener,
   filter,
   listen,
   style,

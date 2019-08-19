@@ -1,5 +1,5 @@
-import off from './off'
-import on, { EventHandler } from './on'
+import addEventListener, { EventHandler } from './addEventListener'
+import removeEventListener from './removeEventListener'
 
 function listen<K extends keyof HTMLElementEventMap>(
   node: HTMLElement,
@@ -7,9 +7,9 @@ function listen<K extends keyof HTMLElementEventMap>(
   handler: EventHandler<K>,
   options?: boolean | AddEventListenerOptions
 ) {
-  on(node, eventName, handler, options)
+  addEventListener(node, eventName, handler, options)
   return () => {
-    off(node, eventName, handler, options)
+    removeEventListener(node, eventName, handler, options)
   }
 }
 

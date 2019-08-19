@@ -1,4 +1,5 @@
 import style from './css'
+import listen from './listen'
 
 export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
 
@@ -23,33 +24,37 @@ export function emulateTransitionEnd(
 ) {
   let called = false
 
-  const emulatedDuration = duration + padding
-  function listener() {
-    called = true
-    element.removeEventListener('transitionend', listener)
-  }
-
-  element.addEventListener('transitionend', listener)
-  setTimeout(() => {
+  let handle = setTimeout(() => {
     if (!called) triggerTransitionEnd(element)
-  }, emulatedDuration)
+  }, duration + padding)
+
+  const remove = listen(
+    element,
+    'transitionend',
+    () => {
+      called = true
+    },
+    { once: true }
+  )
+  return () => {
+    clearTimeout(handle)
+    remove()
+  }
 }
 
 function transitionEnd(
-  node: HTMLElement,
+  element: HTMLElement,
   handler: Listener,
   duration?: number
 ) {
   if (!TRANSITION_SUPPORTED) {
-    emulateTransitionEnd(node, 0, 0)
-    return
+    return emulateTransitionEnd(element, 0, 0)
   }
 
-  if (duration == null) duration = parseDuration(node) || 0
+  if (duration == null) duration = parseDuration(element) || 0
+  emulateTransitionEnd(element, duration)
 
-  node.addEventListener('transitionend', handler, false)
-
-  emulateTransitionEnd(node, duration)
+  return listen(element, 'transitionend', handler)
 }
 
 export default transitionEnd

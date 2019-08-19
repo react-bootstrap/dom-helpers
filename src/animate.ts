@@ -1,9 +1,8 @@
+import { EventHandler } from './addEventListener'
 import css from './css'
 import hyphenate from './hyphenate'
 import isTransform, { TransformValue } from './isTransform'
-import off from './off'
-import on, { EventHandler } from './on'
-import { TRANSITION_SUPPORTED, emulateTransitionEnd } from './transitionEnd'
+import transitionEnd from './transitionEnd'
 import { Property } from './types'
 
 let reset: Partial<Record<Property, string>> = {
@@ -45,8 +44,6 @@ function _animate({
 
   let transforms = ''
 
-  if (!TRANSITION_SUPPORTED) duration = 0
-
   Object.keys(properties).forEach((key: Property) => {
     const value = properties[key]
 
@@ -69,15 +66,15 @@ function _animate({
     if (callback) callback.call(this, event)
   }
 
+  let removeListener: () => void
   if (duration > 0) {
     cssValues.transition = cssProperties.join(', ')
     cssValues['transition-duration'] = `${duration / 1000}s`
-    cssValues['transition-delay'] = `${0}s`
+    cssValues['transition-delay'] = '0s'
     cssValues['transition-timing-function'] = easing || 'linear'
-
-    on(node, 'transitionend', done)
-    emulateTransitionEnd(node, duration)
   }
+
+  removeListener = transitionEnd(node, done, duration)
 
   // eslint-disable-next-line no-unused-expressions
   node.clientLeft // trigger page reflow
@@ -86,7 +83,7 @@ function _animate({
 
   return {
     cancel() {
-      off(node, 'transitionend', done)
+      removeListener()
       css(node, reset)
     },
   }

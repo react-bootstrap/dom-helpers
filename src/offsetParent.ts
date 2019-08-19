@@ -1,20 +1,19 @@
 import css from './css'
 import ownerDocument from './ownerDocument'
 
-function nodeName(node: Element): string {
-  return node.nodeName && node.nodeName.toLowerCase()
-}
+const isHTMLElement = (e: Element | null): e is HTMLElement =>
+  !!e && 'offsetParent' in e
 
 export default function offsetParent(node: HTMLElement): HTMLElement {
   let doc = ownerDocument(node)
-  let parent = node && (node.offsetParent as HTMLElement)
+  let parent = node && node.offsetParent
 
   while (
-    parent &&
-    nodeName(parent) !== 'html' &&
+    isHTMLElement(parent) &&
+    parent.nodeName !== 'HTML' &&
     css(parent, 'position') === 'static'
   ) {
-    parent = (parent as any).offsetParent
+    parent = parent.offsetParent
   }
 
   return (parent || doc.documentElement) as HTMLElement

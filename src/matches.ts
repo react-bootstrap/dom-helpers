@@ -1,19 +1,7 @@
-import canUseDOM from './canUseDOM'
-import ownerDocument from './ownerDocument'
-import qsa from './querySelectorAll'
-
-let matchesCache: (node: Element, selector: string) => boolean
-
-function ie8MatchesSelector(node: HTMLElement, selector: string) {
-  let match = qsa(ownerDocument(node), selector)
-  let i = 0
-
-  while (match[i] && match[i] !== node) i++
-  return !!match[i]
-}
+let matchesImpl: (node: Element, selector: string) => boolean
 
 export default function matches(node: Element, selector: string) {
-  if (!matchesCache && canUseDOM) {
+  if (!matchesImpl) {
     let body: any = document.body
     let nativeMatch =
       body.matches ||
@@ -22,10 +10,8 @@ export default function matches(node: Element, selector: string) {
       body.mozMatchesSelector ||
       body.msMatchesSelector
 
-    matchesCache = nativeMatch
-      ? (n: Element, s: string) => nativeMatch.call(n, s)
-      : ie8MatchesSelector
+    matchesImpl = (n: Element, s: string) => nativeMatch.call(n, s)
   }
 
-  return matchesCache ? matchesCache(node, selector) : false
+  return matchesImpl(node, selector)
 }

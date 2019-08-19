@@ -2,6 +2,7 @@
   "extends": ["@react-bootstrap", "@react-bootstrap/eslint-config-typescript"],
   "rules": {
     "no-nested-ternary": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "import/no-mutable-exports": "off"
   }
 }
