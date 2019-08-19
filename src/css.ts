@@ -1,12 +1,8 @@
 import * as CSS from 'csstype'
-import camelize from './camelizeStyle'
 import getComputedStyle from './getComputedStyle'
 import hyphenate from './hyphenateStyle'
 import isTransform from './isTransform'
-import removeStyle from './removeStyle'
 import { CamelProperty, HyphenProperty, Property } from './types'
-
-type Styles = keyof CSSStyleDeclaration
 
 function style(
   node: HTMLElement,
@@ -28,16 +24,13 @@ function style<T extends Property>(
   let transforms = ''
 
   if (typeof property === 'string') {
-    return (
-      node.style[camelize(property) as Styles] ||
-      getComputedStyle(node).getPropertyValue(hyphenate(property))
-    )
+    return getComputedStyle(node).getPropertyValue(hyphenate(property))
   }
 
   Object.keys(property).forEach((key: Property) => {
     let value = property[key]
     if (!value && value !== 0) {
-      removeStyle(node, hyphenate(key))
+      node.style.removeProperty(hyphenate(key))
     } else if (isTransform(key)) {
       transforms += `${key}(${value}) `
     } else {

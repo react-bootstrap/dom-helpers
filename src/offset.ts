@@ -15,12 +15,11 @@ export default function offset(node: HTMLElement) {
   if (node.getBoundingClientRect !== undefined)
     box = node.getBoundingClientRect()
 
-  // IE8 getBoundingClientRect doesn't support width & height
   box = {
     top: box.top + scrollTop(node) - (docElem.clientTop || 0),
     left: box.left + scrollLeft(node) - (docElem.clientLeft || 0),
-    width: (box.width == null ? node.offsetWidth : box.width) || 0,
-    height: (box.height == null ? node.offsetHeight : box.height) || 0,
+    width: box.width,
+    height: box.height,
   }
 
   return box

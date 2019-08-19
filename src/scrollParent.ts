@@ -2,6 +2,7 @@
 
 import css from './css'
 import height from './height'
+import isDocument from './isDocument'
 
 export default function scrollPrarent(node: HTMLElement) {
   let position = css(node, 'position')
@@ -11,7 +12,7 @@ export default function scrollPrarent(node: HTMLElement) {
   if (position === 'fixed') return ownerDoc || document
 
   // @ts-ignore
-  while ((node = node.parentNode) && node.nodeType !== document.DOCUMENT_NODE) {
+  while ((node = node.parentNode) && !isDocument(node)) {
     let isStatic = excludeStatic && css(node, 'position') === 'static',
       style =
         (css(node, 'overflow') || '') +

@@ -12,19 +12,11 @@ export default function getscrollAccessor(
     let win = isWindow(node)
 
     if (val === undefined) {
-      if (!win) return node[prop]
-      return offset in win
-        ? win[offset]
-        : (win as Window).document.documentElement[prop]
+      return win ? win[offset] : node[prop]
     }
 
     if (win) {
-      win.scrollTo(
-        val,
-        'offset' in win
-          ? win[offset]
-          : (win as Window).document.documentElement[prop]
-      )
+      win.scrollTo(val, win[offset])
     } else {
       node[prop] = val
     }

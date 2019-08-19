@@ -1,7 +1,7 @@
 {
   "name": "dom-helpers",
   "version": "3.4.0",
-  "description": "tiny modular DOM lib for ie8+",
+  "description": "tiny modular DOM lib for ie9+",
   "author": {
     "name": "Jason Quense",
     "email": "monastic.panic@gmail.com"

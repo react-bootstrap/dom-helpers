@@ -11,7 +11,7 @@ describe('Event helpers', () => {
   it('should add an event listener', done => {
     var el = document.getElementById('item-2')
 
-    evt.on(el, 'click', () => done())
+    evt.addEventListener(el, 'click', () => done())
 
     simulant.fire(el, 'click')
   })
@@ -22,9 +22,9 @@ describe('Event helpers', () => {
         throw new Error('event fired')
       }
 
-    evt.on(el, 'click', handler)
+    evt.addEventListener(el, 'click', handler)
 
-    evt.off(el, 'click', handler)
+    evt.removeEventListener(el, 'click', handler)
 
     simulant.fire(el, 'click')
   })
@@ -51,8 +51,8 @@ describe('Event helpers', () => {
       filtered = sinon.spy(),
       handler = sinon.spy()
 
-    evt.on(parent, 'click', handler)
-    evt.on(parent, 'click', evt.filter('#item-2', filtered))
+    evt.addEventListener(parent, 'click', handler)
+    evt.addEventListener(parent, 'click', evt.filter('#item-2', filtered))
 
     simulant.fire(span, 'click')
     simulant.fire(sibling, 'click')
