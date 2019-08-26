@@ -1,8 +1,8 @@
-var { parseDuration } = require('../src/transitionEnd')
+const { parseDuration } = require('../src/transitionEnd')
 
 describe('Transition helpers', () => {
   it('should parse duration from node property', () => {
-    var el = document.createElement('div')
+    const el = document.createElement('div')
 
     el.style.transitionDuration = '1.4s'
 

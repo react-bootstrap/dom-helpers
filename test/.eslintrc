@@ -1,1 +1,23 @@
-extends: jason/mocha
+{
+  "extends": ["plugin:mocha/recommended"],
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "assert": true,
+    "expect": true,
+    "sinon": true
+  },
+  "plugins": ["mocha"],
+  "rules": {
+    "no-script-url": "off",
+    "no-unused-expressions": "off",
+    "padded-blocks": "off",
+    "react/no-multi-comp": "off",
+    "react/prop-types": "off",
+    "mocha/no-exclusive-tests": "error",
+    "mocha/no-mocha-arrows": "off",
+    "mocha/no-hooks-for-single-case": "off",
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^_$" }]
+  }
+}

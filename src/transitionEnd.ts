@@ -1,4 +1,4 @@
-import style from './css'
+import css from './css'
 import listen from './listen'
 
 export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
@@ -6,7 +6,8 @@ export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
 export const TRANSITION_SUPPORTED = 'ontransitionend' in window
 
 export function parseDuration(node: HTMLElement) {
-  let str = style(node, 'transition-duration') || ''
+  let str = css(node, 'transitionDuration') || ''
+
   let mult = str.indexOf('ms') === -1 ? 1000 : 1
   return parseFloat(str) * mult
 }
@@ -20,7 +21,7 @@ function triggerTransitionEnd(element: HTMLElement) {
 export function emulateTransitionEnd(
   element: HTMLElement,
   duration: number,
-  padding: number = 5
+  padding = 5
 ) {
   let called = false
 

@@ -1,20 +1,20 @@
-var $ = require('jquery')
-var css = require('../src/css')
-var _getComputedStyle = require('../src/getComputedStyle')
+const $ = require('jquery')
+const css = require('../src/css')
+const getComputedStyle = require('../src/getComputedStyle')
 
 let style
-
-function injectCss(rules) {
-  if (style) reset()
-  style = $('<style>' + rules + '</style>')
-  style.appendTo('head')
-}
 
 function reset() {
   if (style) {
     style.remove()
   }
   style = null
+}
+
+function injectCss(rules) {
+  if (style) reset()
+  style = $(`<style>${rules}</style>`)
+  style.appendTo('head')
 }
 
 describe('style', () => {
@@ -46,11 +46,11 @@ describe('style', () => {
 
   it('should get computed style', () => {
     expect(
-      _getComputedStyle(container).getPropertyValue('margin-left')
+      getComputedStyle(container).getPropertyValue('margin-left')
     ).to.equal('16px')
 
     expect(
-      _getComputedStyle(container).getPropertyValue('padding-right')
+      getComputedStyle(container).getPropertyValue('padding-right')
     ).to.equal('20px')
   })
 

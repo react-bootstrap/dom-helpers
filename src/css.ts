@@ -1,4 +1,5 @@
 import * as CSS from 'csstype'
+import camelize from './camelizeStyle'
 import getComputedStyle from './getComputedStyle'
 import hyphenate from './hyphenateStyle'
 import isTransform from './isTransform'
@@ -24,7 +25,10 @@ function style<T extends Property>(
   let transforms = ''
 
   if (typeof property === 'string') {
-    return getComputedStyle(node).getPropertyValue(hyphenate(property))
+    return (
+      node.style.getPropertyValue(hyphenate(property)) ||
+      getComputedStyle(node).getPropertyValue(hyphenate(property))
+    )
   }
 
   Object.keys(property).forEach((key: Property) => {

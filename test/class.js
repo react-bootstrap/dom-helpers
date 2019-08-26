@@ -1,4 +1,4 @@
-var cls = require('../src')
+const cls = require('../src')
 
 function removeProperty(property, element) {
   Object.defineProperty(element, property, {
@@ -12,7 +12,7 @@ describe('Class helpers', () => {
   })
 
   it('should add a class', () => {
-    var el = document.getElementById('item-1')
+    const el = document.getElementById('item-1')
 
     cls.addClass(el, 'my-class')
 
@@ -20,7 +20,7 @@ describe('Class helpers', () => {
   })
 
   it('should add a class properly when using a fallback path', () => {
-    var el = document.getElementById('item-1')
+    const el = document.getElementById('item-1')
     removeProperty('classList', el)
 
     cls.addClass(el, 'test-class')
@@ -36,7 +36,7 @@ describe('Class helpers', () => {
   })
 
   it('should remove a class', () => {
-    var el = document.getElementById('item-2')
+    const el = document.getElementById('item-2')
 
     cls.removeClass(el, 'test-class')
 
@@ -53,7 +53,7 @@ describe('Class helpers', () => {
   })
 
   it('should toggle class', () => {
-    var el = document.getElementById('item-1')
+    const el = document.getElementById('item-1')
     removeProperty('classList', el)
 
     cls.toggleClass(el, 'test-class')

@@ -1,7 +1,7 @@
-/*global expect sinon */
-var evt = require('../src'),
-  simulant = require('simulant'),
-  unlisten
+const simulant = require('simulant')
+const evt = require('../src')
+
+let unlisten
 
 describe('Event helpers', () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('Event helpers', () => {
   })
 
   it('should add an event listener', done => {
-    var el = document.getElementById('item-2')
+    const el = document.getElementById('item-2')
 
     evt.addEventListener(el, 'click', () => done())
 
@@ -17,7 +17,7 @@ describe('Event helpers', () => {
   })
 
   it('should remove an event listener', () => {
-    var el = document.getElementById('item-2'),
+    const el = document.getElementById('item-2'),
       handler = () => {
         throw new Error('event fired')
       }
@@ -30,13 +30,13 @@ describe('Event helpers', () => {
   })
 
   it('should register an event listener with listen', done => {
-    var el = document.getElementById('item-2')
+    const el = document.getElementById('item-2')
     evt.listen(el, 'click', () => done())
     simulant.fire(el, 'click')
   })
 
   it('should remove the listener when unlisten() is called', () => {
-    var el = document.getElementById('item-2')
+    const el = document.getElementById('item-2')
     unlisten = evt.listen(el, 'click', () => {
       throw new Error('event fired')
     })
@@ -45,7 +45,7 @@ describe('Event helpers', () => {
   })
 
   it('should filter handlers', () => {
-    var span = document.getElementsByTagName('span')[0],
+    const span = document.getElementsByTagName('span')[0],
       sibling = document.getElementById('item-3'),
       parent = document.getElementById('item-1'),
       filtered = sinon.spy(),

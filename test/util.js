@@ -1,5 +1,5 @@
-var { request, cancel } = require('../src/animationFrame')
-var scrollbarSize = require('../src/scrollbarSize')
+const { request, cancel } = require('../src/animationFrame')
+const scrollbarSize = require('../src/scrollbarSize')
 
 describe('utils', () => {
   describe('requestAnimationFrame', () => {
@@ -8,7 +8,7 @@ describe('utils', () => {
     })
 
     it('should cancel', done => {
-      var id = request(() => {
+      const id = request(() => {
         throw new Error()
       })
 

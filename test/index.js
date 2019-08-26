@@ -1,8 +1,5 @@
-
 describe('DOM helpers', () => {
-
-  it('should import', ()=>{
-
+  it('should import', () => {
     require('../src')
   })
 })
