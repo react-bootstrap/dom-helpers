@@ -38,11 +38,9 @@
     "lint": "tsc -p ./ --noEmit && eslint src test",
     "release": "rollout"
   },
-  "publishConfig": {
-    "directory": "lib"
-  },
   "release": {
-    "conventionalCommits": true
+    "conventionalCommits": true,
+    "publishDir": "lib"
   },
   "devDependencies": {
     "@4c/build": "^1.2.3",
