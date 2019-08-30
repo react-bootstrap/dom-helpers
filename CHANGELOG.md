@@ -1,3 +1,14 @@
+## [5.0.1](https://github.com/jquense/dom-helpers/compare/v5.0.0...v5.0.1) (2019-08-30)
+
+
+### Bug Fixes
+
+* publish dir ([90a9499](https://github.com/jquense/dom-helpers/commit/90a9499))
+
+
+
+
+
 # [5.0.0](https://github.com/jquense/dom-helpers/compare/v3.4.0...v5.0.0) (2019-08-30)
 
 
