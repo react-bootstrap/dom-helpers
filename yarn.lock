@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@4c/build@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@4c/build/-/build-1.2.1.tgz#d2e5d4a0801efabc1d8599fa4e45ebcebaaf4271"
-  integrity sha512-kOr2pIS+sudtLcNTV0rqhbhdswEWcSgwlM0frekJtey+ta+pv6rOUb1LbncBbXGhmKuLKxDyyCCPu0aCIoadoQ==
+"@4c/build@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@4c/build/-/build-1.2.3.tgz#c997b4dedd5e0fd47a5d175f48795303d12a8720"
+  integrity sha512-xvx9SJyv/sOspEHH6f/G1a1KFovlnzUgyPKJMv1bbd1REBtROfowoaXxoSgyBwNoRxyPuJ9zO/taxB1vnJYGvA==
   dependencies:
-    "@4c/cli-core" "^1.5.0"
+    "@4c/cli-core" "^1.5.1"
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.3"
     cpy "^7.2.0"
@@ -15,11 +15,12 @@
     find-up "^3.0.0"
     fs-extra "^7.0.1"
     listr "^0.14.3"
+    typescript "^3.5.3"
 
-"@4c/cli-core@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@4c/cli-core/-/cli-core-1.5.0.tgz#a08a64fc6fb1253bf019e868b090aee04ac782c3"
-  integrity sha512-bu9ggUFBrHDc++/UjDRvqkFXu3QNZBVuZRMkSA80eJ4hV8zbbhJTEGIoQPk0AhOCkdE1WwmIepp/oZvUMs2PaA==
+"@4c/cli-core@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@4c/cli-core/-/cli-core-1.5.1.tgz#45a5ae429d5286c8e98acf3f7f5d90ce53e3f1bc"
+  integrity sha512-J1Y7tW4Rm6AGZC2uJjoGG/Wb6DRvq9oaPIoaQjnrdS0oEVULjlROODbysdjYYUVuHtlsE/L7y9TBZbgwgV9xIg==
   dependencies:
     chalk "^2.4.2"
     execa "^1.0.0"
@@ -29,28 +30,30 @@
     is-ci "^2.0.0"
     log-symbols "^2.2.0"
     ora "^3.1.0"
+    read-pkg-up "^6.0.0"
     slash "^2.0.0"
     strip-ansi "^5.0.0"
     text-table "^0.2.0"
     yargs "^13.2.1"
 
-"@4c/file-butler@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@4c/file-butler/-/file-butler-3.0.0.tgz#56e7c2a42782ddd8b5b04b7d13d0c166c240a72b"
-  integrity sha512-pTP6flVe5Or7zXXkuqfcg3CBrTejnxZ31gAAPnyc5ttV9miqz96DTQQgv0Kpy+JI5ErSkKQZrWQxasGXpnbL0w==
+"@4c/file-butler@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@4c/file-butler/-/file-butler-3.0.1.tgz#21ffdbec7b6b357b24b367d0b622aaa86b2d92cc"
+  integrity sha512-Vriy3mMRz5gllc1IRD+0KEJ78MaPfHOMdRUrAtitdIZ7qr1f56qiLrl25szGpVNGHpq+5kDdU/bf5qlPil87DA==
   dependencies:
+    "@4c/cli-core" "^1.5.1"
     cpy "^7.0.0"
     fs-extra "^7.0.1"
     globby "^9.0.0"
     yargs "^13.2.1"
 
-"@4c/rollout@^1.3.8":
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/@4c/rollout/-/rollout-1.3.8.tgz#67e07315248a6a49d36efa8a68ae7ef2a1e2a2eb"
-  integrity sha512-spkBCH48PD6xxV0xQ+xbkXJlFHcK9JUvf5+8YJVAi1JaVb2mY/vP1VnHHNSAcs+Xto39gvXql1z8t4YfxvOkoA==
+"@4c/rollout@^1.3.9":
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/@4c/rollout/-/rollout-1.3.9.tgz#9f75b468a05e677bb22b7233817fc5d0f4519cbb"
+  integrity sha512-FG+y6YP5LMTHt897bxptJyOJUxCiK36j264wEjHwCKfMUmK+p5D+AkCFVhSTeuOhRd3ppP8yhixCCJurHxCSJg==
   dependencies:
-    "@4c/cli-core" "^1.5.0"
-    "@4c/file-butler" "^3.0.0"
+    "@4c/cli-core" "^1.5.1"
+    "@4c/file-butler" "^3.0.1"
     chalk "^2.4.2"
     common-tags "^1.8.0"
     conventional-changelog "^3.0.6"
@@ -4901,10 +4904,10 @@ karma-webpack@^4.0.2:
     source-map "^0.7.3"
     webpack-dev-middleware "^3.7.0"
 
-karma@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/karma/-/karma-4.2.0.tgz#27e88b310cde090d016980ff5444e3a239196fca"
-  integrity sha512-fmCuxN1rwJxTdZfOXK5LjlmS4Ana/OvzNMpkyLL/TLE8hmgSkpVpMYQ7RTVa8TNKRVQDZNl5W1oF5cfKfgIMlA==
+karma@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/karma/-/karma-4.3.0.tgz#e14471ea090a952265a42ebb442b1a3c09832559"
+  integrity sha512-NSPViHOt+RW38oJklvYxQC4BSQsv737oQlr/r06pCM+slDOr4myuI1ivkRmp+3dVpJDfZt2DmaPJ2wkx+ZZuMQ==
   dependencies:
     bluebird "^3.3.0"
     body-parser "^1.16.1"
@@ -4920,7 +4923,7 @@ karma@^4.2.0:
     graceful-fs "^4.1.2"
     http-proxy "^1.13.0"
     isbinaryfile "^3.0.0"
-    lodash "^4.17.11"
+    lodash "^4.17.14"
     log4js "^4.0.0"
     mime "^2.3.1"
     minimatch "^3.0.2"
@@ -6955,10 +6958,10 @@ rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.20.2:
-  version "1.20.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.20.2.tgz#0e1be13cb5de244c9c463027092f7c93461558b9"
-  integrity sha512-pF4jFzNWMUuudIAeiTgOcSxn8XkBN2Y2/IwPR7iL/IZ8k9RwoLyp2QwNWiYT+HF537zwpmzZHTBYw345H9vq1A==
+rollup@^1.20.3:
+  version "1.20.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.20.3.tgz#6243f6c118ca05f56b2d9433112400cd834a1eb8"
+  integrity sha512-/OMCkY0c6E8tleeVm4vQVDz24CkVgvueK3r8zTYu2AQNpjrcaPwO9hE+pWj5LTFrvvkaxt4MYIp2zha4y0lRvg==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "^12.7.2"
@@ -8090,10 +8093,39 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.28.4, webpack@^4.39.2:
+webpack@^4.28.4:
   version "4.39.2"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.39.2.tgz#c9aa5c1776d7c309d1b3911764f0288c8c2816aa"
   integrity sha512-AKgTfz3xPSsEibH00JfZ9sHXGUwIQ6eZ9tLN8+VLzachk1Cw2LVmy+4R7ZiwTa9cZZ15tzySjeMui/UnSCAZhA==
+  dependencies:
+    "@webassemblyjs/ast" "1.8.5"
+    "@webassemblyjs/helper-module-context" "1.8.5"
+    "@webassemblyjs/wasm-edit" "1.8.5"
+    "@webassemblyjs/wasm-parser" "1.8.5"
+    acorn "^6.2.1"
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^4.1.0"
+    eslint-scope "^4.0.3"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^2.4.0"
+    loader-utils "^1.2.3"
+    memory-fs "^0.4.1"
+    micromatch "^3.1.10"
+    mkdirp "^0.5.1"
+    neo-async "^2.6.1"
+    node-libs-browser "^2.2.1"
+    schema-utils "^1.0.0"
+    tapable "^1.1.3"
+    terser-webpack-plugin "^1.4.1"
+    watchpack "^1.6.0"
+    webpack-sources "^1.4.1"
+
+webpack@^4.39.3:
+  version "4.39.3"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.39.3.tgz#a02179d1032156b713b6ec2da7e0df9d037def50"
+  integrity sha512-BXSI9M211JyCVc3JxHWDpze85CvjC842EvpRsVTc/d15YJGlox7GIDd38kJgWrb3ZluyvIjgenbLDMBQPDcxYQ==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
