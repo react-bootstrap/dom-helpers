@@ -1,3 +1,14 @@
+# [5.1.0](https://github.com/jquense/dom-helpers/compare/v5.0.1...v5.1.0) (2019-09-05)
+
+
+### Features
+
+* **scrollParent:** allow stopping at the first possible scroll parent ([#60](https://github.com/jquense/dom-helpers/issues/60)) ([911fa59](https://github.com/jquense/dom-helpers/commit/911fa59))
+
+
+
+
+
 ## [5.0.1](https://github.com/jquense/dom-helpers/compare/v5.0.0...v5.0.1) (2019-08-30)
 
 
