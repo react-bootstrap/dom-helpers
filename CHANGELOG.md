@@ -1,3 +1,9 @@
+## [5.1.1](https://github.com/jquense/dom-helpers/compare/v5.1.0...v5.1.1) (2019-10-18)
+
+
+
+
+
 # [5.1.0](https://github.com/jquense/dom-helpers/compare/v5.0.1...v5.1.0) (2019-09-05)
 
 
