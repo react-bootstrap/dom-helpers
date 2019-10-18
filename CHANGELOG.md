@@ -1,3 +1,14 @@
+## [5.1.2](https://github.com/jquense/dom-helpers/compare/v5.1.1...v5.1.2) (2019-10-18)
+
+
+### Bug Fixes
+
+* publish ([5e0df13](https://github.com/jquense/dom-helpers/commit/5e0df13))
+
+
+
+
+
 ## [5.1.1](https://github.com/jquense/dom-helpers/compare/v5.1.0...v5.1.1) (2019-10-18)
 
 
