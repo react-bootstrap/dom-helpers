@@ -6,7 +6,7 @@ function removeEventListener<K extends keyof HTMLElementEventMap>(
   handler: TaggedEventHandler<K>,
   options?: boolean | EventListenerOptions
 ) {
-  let capture =
+  const capture =
     options && typeof options !== 'boolean' ? options.capture : options
 
   node.removeEventListener(eventName, handler, capture)

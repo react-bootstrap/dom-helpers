@@ -1,4 +1,4 @@
-let toArray = Function.prototype.bind.call(Function.prototype.call, [].slice)
+const toArray = Function.prototype.bind.call(Function.prototype.call, [].slice)
 
 export default function qsa(
   element: HTMLElement | Document,

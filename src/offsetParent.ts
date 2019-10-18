@@ -5,7 +5,7 @@ const isHTMLElement = (e: Element | null): e is HTMLElement =>
   !!e && 'offsetParent' in e
 
 export default function offsetParent(node: HTMLElement): HTMLElement {
-  let doc = ownerDocument(node)
+  const doc = ownerDocument(node)
   let parent = node && node.offsetParent
 
   while (

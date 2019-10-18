@@ -5,7 +5,7 @@ import isTransform, { TransformValue } from './isTransform'
 import transitionEnd from './transitionEnd'
 import { Property } from './types'
 
-let reset: Partial<Record<Property, string>> = {
+const reset: Partial<Record<Property, string>> = {
   transition: '',
   'transition-duration': '',
   'transition-delay': '',
@@ -38,9 +38,9 @@ function _animate({
   easing,
   callback,
 }: Options) {
-  let cssProperties = [] as Property[]
+  const cssProperties = [] as Property[]
 
-  let cssValues: Partial<Record<Property, string>> = {}
+  const cssValues: Partial<Record<Property, string>> = {}
 
   let transforms = ''
 
@@ -66,7 +66,6 @@ function _animate({
     if (callback) callback.call(this, event)
   }
 
-  let removeListener: () => void
   if (duration > 0) {
     cssValues.transition = cssProperties.join(', ')
     cssValues['transition-duration'] = `${duration / 1000}s`
@@ -74,7 +73,7 @@ function _animate({
     cssValues['transition-timing-function'] = easing || 'linear'
   }
 
-  removeListener = transitionEnd(node, done, duration)
+  const removeListener = transitionEnd(node, done, duration)
 
   // eslint-disable-next-line no-unused-expressions
   node.clientLeft // trigger page reflow

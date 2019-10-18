@@ -2,8 +2,8 @@ let matchesImpl: (node: Element, selector: string) => boolean
 
 export default function matches(node: Element, selector: string) {
   if (!matchesImpl) {
-    let body: any = document.body
-    let nativeMatch =
+    const body: any = document.body
+    const nativeMatch =
       body.matches ||
       body.matchesSelector ||
       body.webkitMatchesSelector ||

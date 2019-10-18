@@ -14,19 +14,19 @@ export default function scrollPrarent(
   element: HTMLElement,
   firstPossible?: boolean
 ) {
-  let position = css(element, 'position')
-  let excludeStatic = position === 'absolute'
-  let ownerDoc = element.ownerDocument
+  const position = css(element, 'position')
+  const excludeStatic = position === 'absolute'
+  const ownerDoc = element.ownerDocument
 
   if (position === 'fixed') return ownerDoc || document
 
   // @ts-ignore
   while ((element = element.parentNode) && !isDocument(element)) {
-    let isStatic = excludeStatic && css(element, 'position') === 'static',
-      style =
-        (css(element, 'overflow') || '') +
-        (css(element, 'overflow-y') || '') +
-        css(element, 'overflow-x')
+    const isStatic = excludeStatic && css(element, 'position') === 'static'
+    const style =
+      (css(element, 'overflow') || '') +
+      (css(element, 'overflow-y') || '') +
+      css(element, 'overflow-x')
 
     if (isStatic) continue
 

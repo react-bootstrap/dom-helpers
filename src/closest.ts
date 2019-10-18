@@ -1,4 +1,3 @@
-import isDocument from './isDocument'
 import matches from './matches'
 
 export default function closest(

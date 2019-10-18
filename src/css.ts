@@ -1,5 +1,4 @@
 import * as CSS from 'csstype'
-import camelize from './camelizeStyle'
 import getComputedStyle from './getComputedStyle'
 import hyphenate from './hyphenateStyle'
 import isTransform from './isTransform'
@@ -32,7 +31,7 @@ function style<T extends Property>(
   }
 
   Object.keys(property).forEach((key: Property) => {
-    let value = property[key]
+    const value = property[key]
     if (!value && value !== 0) {
       node.style.removeProperty(hyphenate(key))
     } else if (isTransform(key)) {

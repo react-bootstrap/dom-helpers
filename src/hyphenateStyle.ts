@@ -7,7 +7,7 @@
 import hyphenate from './hyphenate'
 import { HyphenProperty, Property } from './types'
 
-let msPattern = /^ms-/
+const msPattern = /^ms-/
 export default function hyphenateStyleName(string: Property): Property {
   return hyphenate(string).replace(msPattern, '-ms-') as HyphenProperty
 }

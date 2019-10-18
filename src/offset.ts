@@ -4,10 +4,10 @@ import scrollLeft from './scrollLeft'
 import scrollTop from './scrollTop'
 
 export default function offset(node: HTMLElement) {
-  let doc = ownerDocument(node)
+  const doc = ownerDocument(node)
 
   let box = { top: 0, left: 0, height: 0, width: 0 }
-  let docElem = doc && doc.documentElement
+  const docElem = doc && doc.documentElement
 
   // Make sure it's not a disconnected DOM node
   if (!docElem || !contains(docElem, node)) return box

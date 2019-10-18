@@ -6,7 +6,7 @@
 import camelize from './camelize'
 import { CamelProperty, Property } from './types'
 
-let msPattern = /^-ms-/
+const msPattern = /^-ms-/
 
 export default function camelizeStyleName<T extends string = Property>(
   string: T

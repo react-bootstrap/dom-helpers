@@ -7,26 +7,26 @@ type RequestAnimationFrame = typeof requestAnimationFrame
 /* https://github.com/component/raf */
 let prev = new Date().getTime()
 function fallback(fn: FrameRequestCallback): number {
-  let curr = new Date().getTime()
-  let ms = Math.max(0, 16 - (curr - prev))
-  let handle = setTimeout(fn, ms)
+  const curr = new Date().getTime()
+  const ms = Math.max(0, 16 - (curr - prev))
+  const handle = setTimeout(fn, ms)
 
   prev = curr
   return handle as any
 }
 
-let vendors = ['', 'webkit', 'moz', 'o', 'ms'] as Vendor[]
+const vendors = ['', 'webkit', 'moz', 'o', 'ms'] as Vendor[]
 let cancelMethod = 'clearTimeout'
 let rafImpl: RequestAnimationFrame = fallback
 
 // eslint-disable-next-line import/no-mutable-exports
 
-let getKey = (vendor: Vendor, k: string) =>
+const getKey = (vendor: Vendor, k: string) =>
   `${vendor + (!vendor ? k : k[0].toUpperCase() + k.substr(1))}AnimationFrame`
 
 if (canUseDOM) {
   vendors.some(vendor => {
-    let rafMethod = getKey(vendor, 'request')
+    const rafMethod = getKey(vendor, 'request')
 
     if (rafMethod in window) {
       cancelMethod = getKey(vendor, 'cancel')

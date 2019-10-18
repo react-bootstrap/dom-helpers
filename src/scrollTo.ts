@@ -14,16 +14,13 @@ export default function scrollTo(
   let offset = getOffset(selected)
   let poff = { top: 0, left: 0 }
 
-  let selectedTop: number
-  let selectedHeight, bottom
-
   if (!selected) return undefined
 
-  let list = scrollParent || (getScrollParent(selected) as HTMLElement)
-  let isWin = getWindow(list)
+  const list = scrollParent || (getScrollParent(selected) as HTMLElement)
+  const isWin = getWindow(list)
   let listScrollTop = scrollTop(list)
 
-  let listHeight = height(list, true)
+  const listHeight = height(list, true)
 
   if (!isWin) poff = getOffset(list)
 
@@ -34,9 +31,9 @@ export default function scrollTo(
     width: offset.width,
   }
 
-  selectedHeight = offset.height
-  selectedTop = offset.top + (isWin ? 0 : listScrollTop)
-  bottom = selectedTop + selectedHeight
+  const selectedHeight = offset.height
+  const selectedTop = offset.top + (isWin ? 0 : listScrollTop)
+  const bottom = selectedTop + selectedHeight
 
   listScrollTop =
     listScrollTop > selectedTop
@@ -45,6 +42,6 @@ export default function scrollTo(
       ? bottom - listHeight
       : listScrollTop
 
-  let id = request(() => scrollTop(list, listScrollTop))
+  const id = request(() => scrollTop(list, listScrollTop))
   return () => cancel(id)
 }

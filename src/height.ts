@@ -2,7 +2,7 @@ import getWindow from './isWindow'
 import offset from './offset'
 
 export default function height(node: HTMLElement, client?: boolean) {
-  let win = getWindow(node)
+  const win = getWindow(node)
   return win
     ? win.innerHeight
     : client

@@ -9,7 +9,7 @@ export default function getscrollAccessor(
   function scrollAccessor(node: Element): number
   function scrollAccessor(node: Element, val: number): undefined
   function scrollAccessor(node: Element, val?: number) {
-    let win = isWindow(node)
+    const win = isWindow(node)
 
     if (val === undefined) {
       return win ? win[offset] : node[prop]
