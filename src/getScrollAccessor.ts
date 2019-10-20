@@ -16,7 +16,7 @@ export default function getscrollAccessor(
     }
 
     if (win) {
-      win.scrollTo(val, win[offset])
+      win.scrollTo(win[offset], val)
     } else {
       node[prop] = val
     }
