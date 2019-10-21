@@ -19,10 +19,10 @@ module.exports = config => {
 
     logLevel: config.LOG_INFO,
 
-    browsers: [isCI ? 'ChromeTravisCI' : 'Chrome', 'Firefox'],
+    browsers: env.BROWSER ? env.BROWSER.split(',') : ['Chrome', 'Firefox'],
 
     customLaunchers: {
-      ChromeTravisCI: {
+      ChromeCi: {
         base: 'Chrome',
         flags: ['--no-sandbox'],
       },
