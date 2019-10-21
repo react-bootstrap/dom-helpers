@@ -1,8 +1,8 @@
 'use strict'
 
-const isCI = process.env.CONTINUOUS_INTEGRATION === 'true'
-
 module.exports = config => {
+  const { env } = process
+
   config.set({
     basePath: '',
 
