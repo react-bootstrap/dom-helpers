@@ -1,6 +1,6 @@
 {
   "name": "dom-helpers",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "description": "tiny modular DOM lib for ie9+",
   "author": {
     "name": "Jason Quense",
@@ -97,5 +97,5 @@
   },
   "readme": "ERROR: No README data found!",
   "homepage": "https://github.com/jquense/dom-helpers#readme",
-  "_id": "dom-helpers@5.1.1"
+  "_id": "dom-helpers@5.1.2"
 }

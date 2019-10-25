@@ -1,3 +1,15 @@
+## [5.1.3](https://github.com/jquense/dom-helpers/compare/v5.1.2...v5.1.3) (2019-10-25)
+
+
+### Bug Fixes
+
+* Rename index.js to index.ts ([#67](https://github.com/jquense/dom-helpers/issues/67)) ([f7071f9](https://github.com/jquense/dom-helpers/commit/f7071f9))
+* swap scrollTo arguments in scrollAccessor ([#64](https://github.com/jquense/dom-helpers/issues/64)) ([cdfcb62](https://github.com/jquense/dom-helpers/commit/cdfcb62))
+
+
+
+
+
 ## [5.1.2](https://github.com/jquense/dom-helpers/compare/v5.1.1...v5.1.2) (2019-10-18)
 
 
