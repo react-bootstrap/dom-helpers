@@ -56,16 +56,15 @@ require('dom-helpers/css')(node, { width: '40px' })
   - `removeClass(element, className)`
   - `hasClass(element, className)`
   - `toggleClass(element, className)`
-  - `css(element, propName, [value])` or `style(element, objectOfPropValues)`
-  - `removeStyle(element, styleName)`
+  - `style(element, propName)` or `style(element, objectOfPropValues)`
   - `getComputedStyle(element)` -> `getPropertyValue(name)`
   - `animate(node, properties, duration, easing, callback)` programmatically start css transitions
   - `transitionEnd(node, handler, [duration])` listens for transition end, and ensures that the handler if called even if the transition fails to fire its end event. Will attempt to read duration from the element, otherwise one can be provided
   - `addEventListener(node, eventName, handler, [options])`:
   - `removeEventListener(node, eventName, handler, [options])`:
   - `listen(node, eventName, handler, [options])`: wraps `addEventlistener` and returns a function that calls `removeEventListener` for you
-  - `filterEventHandler(selector, fn)`: returns a function handler that only fires when the target matches or is contained in the selector ex: `on(list, 'click', filterEventHandler('li > a', handler))`
-  - `animationFrame.request(cb)` returns an ID for canceling
-  - `animationFrame.cancel(id)`
+  - `filter(selector, fn)`: returns a function handler that only fires when the target matches or is contained in the selector ex: `on(list, 'click', filter('li > a', handler))`
+  - `requestAnimationFrame(cb)` returns an ID for canceling
+  - `cancelAnimationFrame(id)`
   - `scrollbarSize([recalc])` returns the scrollbar's width size in pixels
   - `scrollTo(element, [scrollParent])`
