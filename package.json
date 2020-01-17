@@ -77,7 +77,7 @@
     "karma-sinon": "^1.0.5",
     "karma-sourcemap-loader": "^0.3.2",
     "karma-webpack": "^4.0.2",
-    "mocha": "^6.2.1",
+    "mocha": "^7.0.0",
     "rimraf": "^3.0.0",
     "rollout": "^0.1.0",
     "rollup": "^1.25.0",
