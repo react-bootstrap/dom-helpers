@@ -34,7 +34,7 @@
     "tdd": "karma start",
     "check:size": "rollup -c",
     "build:pick": "cherry-pick --name=dom-helpers --cwd=lib --input-dir=../src --cjs-dir=cjs --esm-dir=esm",
-    "build": "rimraf lib && 4c build src && yarn build:pick",
+    "build": "rimraf lib && node_modules/.bin/build src && yarn build:pick",
     "prepublishOnly": "yarn build",
     "lint": "tsc -p ./ --noEmit && eslint src test",
     "release": "rollout"
