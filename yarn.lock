@@ -1211,7 +1211,7 @@
     "@typescript-eslint/typescript-estree" "2.19.2"
     eslint-scope "^5.0.0"
 
-"@typescript-eslint/parser@^2.16.0", "@typescript-eslint/parser@^2.4.0":
+"@typescript-eslint/parser@^2.4.0":
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.19.2.tgz#21f42c0694846367e7d6a907feb08ab2f89c0879"
   integrity sha512-8uwnYGKqX9wWHGPGdLB9sk9+12sjcdqEEYKGgbS8A0IvYX59h01o8os5qXUHMq2na8vpDRaV0suTLM7S8wraTA==
@@ -3276,15 +3276,6 @@ escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
-
-eslint-config-4catalyzer-typescript@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-typescript/-/eslint-config-4catalyzer-typescript-1.1.6.tgz#cb8484af9a91241ddd76d3e8dc655b070acc5859"
-  integrity sha512-35KrQauTi1ek3SR8Ukn2w9t97/hVNlkgmFMxmkRcoS2jiGKWSsSKcAoLTm6EBH28WBKd+iOmxdr8br4koq88Ig==
-  dependencies:
-    "@typescript-eslint/parser" "^2.16.0"
-    babel-eslint "^10.0.3"
-    eslint-import-resolver-typescript "^2.0.0"
 
 eslint-config-airbnb-base@^14.0.0:
   version "14.0.0"
