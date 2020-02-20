@@ -83,7 +83,7 @@
     "rollup-plugin-size-snapshot": "^0.11.0",
     "rollup-plugin-typescript": "^1.0.1",
     "simulant": "^0.2.2",
-    "sinon": "^8.1.1",
+    "sinon": "^9.0.0",
     "typescript": "^3.7.5",
     "webpack": "^4.41.6"
   },
