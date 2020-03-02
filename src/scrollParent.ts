@@ -10,7 +10,7 @@ import isDocument from './isDocument'
  * @param element Starting element
  * @param firstPossible Stop at the first scrollable parent, even if it's not currently scrollable
  */
-export default function scrollPrarent(
+export default function scrollParent(
   element: HTMLElement,
   firstPossible?: boolean
 ) {
