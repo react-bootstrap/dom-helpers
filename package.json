@@ -80,7 +80,7 @@
     "mocha": "^7.1.0",
     "rimraf": "^3.0.2",
     "rollout": "^0.1.0",
-    "rollup": "^1.32.0",
+    "rollup": "^2.0.2",
     "rollup-plugin-size-snapshot": "^0.11.0",
     "rollup-plugin-typescript": "^1.0.1",
     "simulant": "^0.2.2",
