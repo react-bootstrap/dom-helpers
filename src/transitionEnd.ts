@@ -19,7 +19,7 @@ function triggerTransitionEnd(element: HTMLElement) {
   element.dispatchEvent(evt)
 }
 
-export function emulateTransitionEnd(
+function emulateTransitionEnd(
   element: HTMLElement,
   duration: number,
   padding = 5
@@ -38,6 +38,7 @@ export function emulateTransitionEnd(
     },
     { once: true }
   )
+
   return () => {
     clearTimeout(handle)
     remove()
@@ -49,14 +50,15 @@ function transitionEnd(
   handler: Listener,
   duration?: number
 ) {
-  if (!TRANSITION_SUPPORTED) {
-    return emulateTransitionEnd(element, 0, 0)
-  }
-
   if (duration == null) duration = parseDuration(element) || 0
-  emulateTransitionEnd(element, duration)
+  const removeEmulate = emulateTransitionEnd(element, duration)
 
-  return listen(element, 'transitionend', handler)
+  const remove = listen(element, 'transitionend', handler);
+
+  return () => {
+    removeEmulate()
+    remove()
+  }
 }
 
 export default transitionEnd
