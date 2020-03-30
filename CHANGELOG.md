@@ -1,3 +1,15 @@
+## [5.1.4](https://github.com/react-bootstrap/dom-helpers/compare/v5.1.3...v5.1.4) (2020-03-30)
+
+
+### Bug Fixes
+
+* Fix offset calculation ([#94](https://github.com/react-bootstrap/dom-helpers/issues/94)) ([de51a88](https://github.com/react-bootstrap/dom-helpers/commit/de51a8845365cd42a3e6e06593d76c34a88b2263))
+* Fix transitionEnd emulation ([#87](https://github.com/react-bootstrap/dom-helpers/issues/87)) ([8686765](https://github.com/react-bootstrap/dom-helpers/commit/8686765dbf0803e6966bd893c540f9443dbeccd6)), closes [#70](https://github.com/react-bootstrap/dom-helpers/issues/70)
+
+
+
+
+
 ## [5.1.3](https://github.com/jquense/dom-helpers/compare/v5.1.2...v5.1.3) (2019-10-25)
 
 
