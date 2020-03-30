@@ -48,7 +48,7 @@
     "csstype": "^2.6.7"
   },
   "devDependencies": {
-    "@4c/build": "^2.2.4",
+    "@4c/build": "^2.2.5",
     "@4c/rollout": "^2.1.4",
     "@4c/tsconfig": "^0.3.1",
     "@babel/cli": "^7.8.4",
@@ -63,7 +63,7 @@
     "babel-loader": "^8.1.0",
     "cherry-pick": "^0.5.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-mocha": "^6.3.0",
     "eslint-plugin-react": "^7.19.0",
@@ -80,13 +80,13 @@
     "karma-webpack": "^4.0.2",
     "mocha": "^7.1.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.1.0",
+    "rollup": "^2.3.0",
     "rollup-plugin-size-snapshot": "^0.11.0",
     "rollup-plugin-typescript": "^1.0.1",
     "simulant": "^0.2.2",
     "sinon": "^9.0.1",
     "typescript": "^3.8.3",
-    "webpack": "^4.42.0"
+    "webpack": "^4.42.1"
   },
   "bugs": {
     "url": "https://github.com/jquense/dom-helpers/issues"
