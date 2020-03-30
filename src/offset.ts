@@ -16,8 +16,8 @@ export default function offset(node: HTMLElement) {
     box = node.getBoundingClientRect()
 
   box = {
-    top: box.top + scrollTop(node) - (docElem.clientTop || 0),
-    left: box.left + scrollLeft(node) - (docElem.clientLeft || 0),
+    top: box.top + scrollTop(docElem) - (docElem.clientTop || 0),
+    left: box.left + scrollLeft(docElem) - (docElem.clientLeft || 0),
     width: box.width,
     height: box.height,
   }
