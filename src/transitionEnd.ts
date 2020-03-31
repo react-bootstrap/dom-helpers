@@ -1,12 +1,9 @@
-import canUseDOM from './canUseDOM'
 import css from './css'
 import listen from './listen'
 
 export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
 
-export const TRANSITION_SUPPORTED = canUseDOM && 'ontransitionend' in window
-
-export function parseDuration(node: HTMLElement) {
+function parseDuration(node: HTMLElement) {
   const str = css(node, 'transitionDuration') || ''
 
   const mult = str.indexOf('ms') === -1 ? 1000 : 1
@@ -45,13 +42,14 @@ function emulateTransitionEnd(
   }
 }
 
-function transitionEnd(
+export default function transitionEnd(
   element: HTMLElement,
   handler: Listener,
-  duration?: number
+  duration?: number | null,
+  padding?: number
 ) {
   if (duration == null) duration = parseDuration(element) || 0
-  const removeEmulate = emulateTransitionEnd(element, duration)
+  const removeEmulate = emulateTransitionEnd(element, duration, padding)
 
   const remove = listen(element, 'transitionend', handler);
 
@@ -60,5 +58,3 @@ function transitionEnd(
     remove()
   }
 }
-
-export default transitionEnd
