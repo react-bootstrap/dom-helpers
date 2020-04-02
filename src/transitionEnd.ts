@@ -51,7 +51,7 @@ export default function transitionEnd(
   if (duration == null) duration = parseDuration(element) || 0
   const removeEmulate = emulateTransitionEnd(element, duration, padding)
 
-  const remove = listen(element, 'transitionend', handler);
+  const remove = listen(element, 'transitionend', handler)
 
   return () => {
     removeEmulate()
