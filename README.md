@@ -59,7 +59,7 @@ require('dom-helpers/css')(node, { width: '40px' })
   - `style(element, propName)` or `style(element, objectOfPropValues)`
   - `getComputedStyle(element)` -> `getPropertyValue(name)`
   - `animate(node, properties, duration, easing, callback)` programmatically start css transitions
-  - `transitionEnd(node, handler, [duration])` listens for transition end, and ensures that the handler if called even if the transition fails to fire its end event. Will attempt to read duration from the element, otherwise one can be provided
+  - `transitionEnd(node, handler, [duration], [padding])` listens for transition end, and ensures that the handler if called even if the transition fails to fire its end event. Will attempt to read duration from the element, otherwise one can be provided
   - `addEventListener(node, eventName, handler, [options])`:
   - `removeEventListener(node, eventName, handler, [options])`:
   - `listen(node, eventName, handler, [options])`: wraps `addEventlistener` and returns a function that calls `removeEventListener` for you
