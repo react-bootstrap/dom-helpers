@@ -32,7 +32,7 @@ export default function scrollParent(
 
     if (
       /(auto|scroll)/.test(style) &&
-      (firstPossible || height(element) < element!.scrollHeight)
+      (firstPossible || height(element, true) < element!.scrollHeight)
     ) {
       return element
     }
