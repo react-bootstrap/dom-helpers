@@ -64,7 +64,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "cherry-pick": "^0.5.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-mocha": "^6.3.0",
