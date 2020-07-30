@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.7",
-    "csstype": "^2.6.7"
+    "csstype": "^3.0.2"
   },
   "devDependencies": {
     "@4c/build": "^2.2.7",
