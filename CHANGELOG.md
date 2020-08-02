@@ -1,3 +1,14 @@
+# [5.2.0](https://github.com/react-bootstrap/dom-helpers/compare/v5.1.4...v5.2.0) (2020-08-02)
+
+
+### Features
+
+* Support padding in transitionEnd ([#96](https://github.com/react-bootstrap/dom-helpers/issues/96)) ([7b2f626](https://github.com/react-bootstrap/dom-helpers/commit/7b2f626b92b84f78ec69aa891fb99d800a5d04b4))
+
+
+
+
+
 ## [5.1.4](https://github.com/react-bootstrap/dom-helpers/compare/v5.1.3...v5.1.4) (2020-03-30)
 
 
