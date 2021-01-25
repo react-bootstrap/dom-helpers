@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@4c/build": "^2.2.8",
-    "@4c/rollout": "^2.1.11",
+    "@4c/rollout": "^2.1.12",
     "@4c/tsconfig": "^0.3.1",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -59,12 +59,12 @@
     "@react-bootstrap/babel-preset": "^1.2.0",
     "@react-bootstrap/eslint-config": "^1.3.2",
     "@react-bootstrap/eslint-config-typescript": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.12.0",
-    "@typescript-eslint/parser": "^4.12.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "cherry-pick": "^0.5.0",
-    "eslint": "^7.17.0",
+    "eslint": "^7.18.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-mocha": "^8.0.0",
@@ -82,12 +82,12 @@
     "karma-webpack": "^4.0.2",
     "mocha": "^8.2.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.36.1",
+    "rollup": "^2.38.0",
     "rollup-plugin-size-snapshot": "^0.12.0",
     "rollup-plugin-typescript": "^1.0.1",
     "simulant": "^0.2.2",
-    "sinon": "^9.2.3",
+    "sinon": "^9.2.4",
     "typescript": "^4.1.3",
-    "webpack": "^4.45.0"
+    "webpack": "^4.46.0"
   }
 }
