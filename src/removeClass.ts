@@ -12,7 +12,7 @@ export default function removeClass(
   if (element.classList) {
     element.classList.remove(className)
   } else if (typeof element.className === 'string') {
-    ;(element as Element).className = replaceClassName(
+    (element as Element).className = replaceClassName(
       element.className,
       className
     )

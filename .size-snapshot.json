@@ -1,15 +1,15 @@
 {
   "lib/dist/dom-helpers.js": {
-    "bundled": 15481,
-    "minified": 8329,
-    "gzipped": 3124,
+    "bundled": 24575,
+    "minified": 12882,
+    "gzipped": 4632,
     "treeshaked": {
       "rollup": {
-        "code": 653,
+        "code": 716,
         "import_statements": 0
       },
       "webpack": {
-        "code": 1940
+        "code": 2003
       }
     }
   }
