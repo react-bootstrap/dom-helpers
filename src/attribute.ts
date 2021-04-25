@@ -8,7 +8,7 @@
 export default function attribute(
   node: Element | null,
   attr: string,
-  val?: string
+  val?: string | boolean | null
 ): string | null | undefined {
   if (node) {
     if (typeof val === 'undefined') {
@@ -17,7 +17,7 @@ export default function attribute(
     if (!val && val !== '') {
       node.removeAttribute(attr);
     } else {
-      node.setAttribute(attr, val);
+      node.setAttribute(attr, String(val));
     }
   }
 }
