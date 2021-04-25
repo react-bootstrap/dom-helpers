@@ -21,6 +21,24 @@ describe('DOM manipulation helpers', () => {
     expect(manip.isVisible(visible)).to.be(true);
   });
   
+  it('should get an attribute of an element', () => {
+    const el = document.querySelector('#child-1 :first-child');
+    const val = manip.attribute(el, 'disabled');
+    
+    expect(val).to.be('disabled');
+  });
+  
+  it('should set an attribute of an element', () => {
+    const el = document.querySelector('#child-1 :first-child');
+    let val;
+    
+    manip.attribute(el, 'disabled', false);
+    
+    val = manip.attribute(el, 'disabled');
+    
+    expect(val).to.be(null);
+  });
+  
   it('should calculate the text content of a node', () => {
     const el = document.querySelector('#child-2 > span');
     
@@ -33,7 +51,7 @@ describe('DOM manipulation helpers', () => {
     
     manip.prepend(child, el);
     
-    const children = manip.children(el);
+    const children = manip.childElements(el);
     
     expect(children.length).to.be(2);
   });
@@ -44,7 +62,7 @@ describe('DOM manipulation helpers', () => {
     
     manip.insertAfter(child, el);
     
-    const children = manip.children(el.parentElement);
+    const children = manip.childElements(el.parentElement);
     
     expect(children.length).to.be(3);
   });

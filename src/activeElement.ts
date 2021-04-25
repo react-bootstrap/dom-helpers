@@ -1,9 +1,9 @@
 import ownerDocument from './ownerDocument'
 
 /**
- * Return the actively focused element safely.
+ * Returns the actively focused element safely.
  *
- * @param doc the document to checl
+ * @param doc the document to check
  */
 export default function activeElement(doc = ownerDocument()) {
   // Support: IE 9 only

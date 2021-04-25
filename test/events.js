@@ -60,4 +60,14 @@ describe('Event helpers', () => {
     expect(filtered.callCount).to.equal(1)
     expect(handler.callCount).to.equal(2)
   })
+  
+  it('should trigger events', () => {
+    const span = document.getElementsByTagName('span')[0],
+      handler = sinon.spy()
+      
+    evt.addEventListener(span, 'click', handler);
+    evt.triggerEvent(span, 'click');
+    
+    expect(handler.callCount).to.equal(1);
+  });
 })

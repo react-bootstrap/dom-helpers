@@ -6,6 +6,12 @@ import scrollTop from './scrollTop'
 
 const nodeName = (node: Element) => node.nodeName && node.nodeName.toLowerCase()
 
+/**
+ * Returns the relative position of a given element.
+ * 
+ * @param node the element
+ * @param offsetParent the offset parent
+ */
 export default function position(
   node: HTMLElement,
   offsetParent?: HTMLElement

@@ -3,6 +3,11 @@ import ownerDocument from './ownerDocument'
 import scrollLeft from './scrollLeft'
 import scrollTop from './scrollTop'
 
+/**
+ * Returns the offset of a given element, including top and left positions, width and height.
+ * 
+ * @param node the element
+ */
 export default function offset(node: HTMLElement) {
   const doc = ownerDocument(node)
 

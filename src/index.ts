@@ -6,7 +6,8 @@ import {
   cancel as cancelAnimationFrame,
   request as requestAnimationFrame,
 } from './animationFrame'
-import children from './children'
+import attribute from './attribute';
+import childElements from './childElements'
 import clear from './clear'
 import closest from './closest'
 import contains from './contains'
@@ -54,6 +55,7 @@ export {
   listen,
   style,
   getComputedStyle,
+  attribute,
   activeElement,
   ownerDocument,
   ownerWindow,
@@ -79,7 +81,7 @@ export {
   toggleClass,
   transitionEnd,
   childNodes,
-  children,
+  childElements,
   nextUntil,
   parents,
   siblings,
@@ -101,6 +103,7 @@ export default {
   listen,
   style,
   getComputedStyle,
+  attribute,
   activeElement,
   ownerDocument,
   ownerWindow,
@@ -126,7 +129,7 @@ export default {
   toggleClass,
   transitionEnd,
   childNodes,
-  children,
+  childElements,
   nextUntil,
   parents,
   siblings,

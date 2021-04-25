@@ -1,5 +1,6 @@
 import css from './css'
 import listen from './listen'
+import triggerEvent from './triggerEvent';
 
 export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
 
@@ -10,12 +11,6 @@ function parseDuration(node: HTMLElement) {
   return parseFloat(str) * mult
 }
 
-function triggerTransitionEnd(element: HTMLElement) {
-  const evt = document.createEvent('HTMLEvents')
-  evt.initEvent('transitionend', true, true)
-  element.dispatchEvent(evt)
-}
-
 function emulateTransitionEnd(
   element: HTMLElement,
   duration: number,
@@ -24,7 +19,7 @@ function emulateTransitionEnd(
   let called = false
 
   const handle = setTimeout(() => {
-    if (!called) triggerTransitionEnd(element)
+    if (!called) triggerEvent(element, 'transitionend', true);
   }, duration + padding)
 
   const remove = listen(

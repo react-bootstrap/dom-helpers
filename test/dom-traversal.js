@@ -24,7 +24,7 @@ describe('DOM traversal helpers', () => {
   it('should collect child elements', () => {
     const el = document.getElementById('root');
     
-    const elements = traversal.children(el);
+    const elements = traversal.childElements(el);
     
     expect(elements.length).to.be(2);
   });
