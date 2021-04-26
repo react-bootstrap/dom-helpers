@@ -1,5 +1,14 @@
 import { TaggedEventHandler } from './addEventListener'
 
+/**
+ * A `removeEventListener` ponyfill
+ * 
+ * @param node the element
+ * @param eventName the event name
+ * @param handle the handler
+ * @param options event options
+ */
+
 function removeEventListener<K extends keyof HTMLElementEventMap>(
   node: HTMLElement,
   eventName: K,

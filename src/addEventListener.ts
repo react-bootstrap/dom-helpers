@@ -30,8 +30,14 @@ export type EventHandler<K extends keyof HTMLElementEventMap> = (
 export type TaggedEventHandler<
   K extends keyof HTMLElementEventMap
 > = EventHandler<K> & { __once?: EventHandler<K> }
+
 /**
  * An `addEventListener` ponyfill, supports the `once` option
+ * 
+ * @param node the element
+ * @param eventName the event name
+ * @param handle the handler
+ * @param options event options
  */
 function addEventListener<K extends keyof HTMLElementEventMap>(
   node: HTMLElement,
