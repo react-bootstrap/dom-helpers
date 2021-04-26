@@ -1,3 +1,9 @@
+## [5.2.1](https://github.com/react-bootstrap/dom-helpers/compare/v5.2.0...v5.2.1) (2021-04-26)
+
+
+
+
+
 # [5.2.0](https://github.com/react-bootstrap/dom-helpers/compare/v5.1.4...v5.2.0) (2020-08-02)
 
 
