@@ -12,7 +12,7 @@ export default function hasClass(
     return !!className && element.classList.contains(className)
 
   return (
-    ` ${element.className.baseVal || element.className} `.indexOf(
+    ` ${element.className || element.className.baseVal} `.indexOf(
       ` ${className} `
     ) !== -1
   )
