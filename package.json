@@ -80,7 +80,7 @@
     "karma-sinon": "^1.0.5",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-webpack": "^4.0.2",
-    "mocha": "^8.4.0",
+    "mocha": "^9.2.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0",
     "rollup-plugin-size-snapshot": "^0.12.0",
