@@ -14,6 +14,19 @@
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./lib/cjs/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./*": {
+      "types": "./lib/cjs/*.d.ts",
+      "import": "./lib/esm/*.js",
+      "require": "./lib/cjs/*.js"
+    }
+  },
   "keywords": [
     "dom-helpers",
     "react-component",
@@ -30,11 +43,14 @@
     "css"
   ],
   "scripts": {
-    "test": "karma start --single-run",
+    "test": "yarn test:build && karma start --single-run",
+    "test:build": "yarn test:build:commonjs && yarn test:build:esm",
+    "test:build:esm": "node lib/esm/index.js",
+    "test:build:commonjs": "node lib/cjs/index.js",
     "tdd": "karma start",
     "check:size": "rollup -c",
-    "build:pick": "cherry-pick --name=dom-helpers --cwd=lib --input-dir=../src --cjs-dir=cjs --esm-dir=esm",
-    "build": "rimraf lib && node_modules/.bin/build src && yarn build:pick",
+    "build": "rimraf lib && node_modules/.bin/build src && yarn build:esm:package.json",
+    "build:esm:package.json": "echo '{ \"type\": \"module\" }' > lib/esm/package.json",
     "prepublishOnly": "yarn build",
     "lint": "tsc -p ./ --noEmit && eslint src test",
     "release": "rollout"
@@ -63,7 +79,7 @@
     "@typescript-eslint/parser": "^4.22.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "cherry-pick": "^0.5.0",
+    "babel-plugin-add-import-extension": "^1.6.0",
     "eslint": "^7.25.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
