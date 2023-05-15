@@ -45,8 +45,8 @@
   "scripts": {
     "test": "yarn test:build && karma start --single-run",
     "test:build": "yarn test:build:commonjs && yarn test:build:esm",
-    "test:build:esm": "node lib/esm/index.js",
-    "test:build:commonjs": "node lib/cjs/index.js",
+    "test:build:esm": "node --input-type=module -e 'import { addEventListener } from \"./lib/esm/index.js\";'",
+    "test:build:commonjs": "node --input-type=commonjs -e 'const { addEventListener } = require(\"./\");'",
     "tdd": "karma start",
     "check:size": "rollup -c",
     "build": "rimraf lib && node_modules/.bin/build src && yarn build:pick && yarn build:esm:package.json",
