@@ -1,50 +1,50 @@
-import activeElement from './activeElement'
-import addClass from './addClass'
-import addEventListener from './addEventListener'
-import animate from './animate'
+import activeElement from './activeElement.ts';
+import addClass from './addClass.ts';
+import addEventListener from './addEventListener.ts';
+import animate from './animate.ts';
 import {
   cancel as cancelAnimationFrame,
   request as requestAnimationFrame,
-} from './animationFrame'
-import attribute from './attribute';
-import childElements from './childElements'
-import clear from './clear'
-import closest from './closest'
-import contains from './contains'
-import childNodes from './childNodes'
-import style from './css'
-import filter from './filterEventHandler'
-import getComputedStyle from './getComputedStyle'
-import hasClass from './hasClass'
-import height from './height'
-import insertAfter from './insertAfter'
-import isInput from './isInput'
-import isVisible from './isVisible'
-import listen from './listen'
-import matches from './matches'
-import nextUntil from './nextUntil'
-import offset from './offset'
-import offsetParent from './offsetParent'
-import ownerDocument from './ownerDocument'
-import ownerWindow from './ownerWindow'
-import parents from './parents'
-import position from './position'
-import prepend from './prepend'
-import querySelectorAll from './querySelectorAll'
-import remove from './remove'
-import removeClass from './removeClass'
-import removeEventListener from './removeEventListener'
-import scrollbarSize from './scrollbarSize'
-import scrollLeft from './scrollLeft'
-import scrollParent from './scrollParent'
-import scrollTo from './scrollTo'
-import scrollTop from './scrollTop'
-import siblings from './siblings'
-import text from './text'
-import toggleClass from './toggleClass'
-import transitionEnd from './transitionEnd'
-import triggerEvent from './triggerEvent'
-import width from './width'
+} from './animationFrame.ts';
+import attribute from './attribute.ts';
+import childElements from './childElements.ts';
+import clear from './clear.ts';
+import closest from './closest.ts';
+import contains from './contains.ts';
+import childNodes from './childNodes.ts';
+import style from './css.ts';
+import filter from './filterEventHandler.ts';
+import getComputedStyle from './getComputedStyle.ts';
+import hasClass from './hasClass.ts';
+import height from './height.ts';
+import insertAfter from './insertAfter.ts';
+import isInput from './isInput.ts';
+import isVisible from './isVisible.ts';
+import listen from './listen.ts';
+import matches from './matches.ts';
+import nextUntil from './nextUntil.ts';
+import offset from './offset.ts';
+import offsetParent from './offsetParent.ts';
+import ownerDocument from './ownerDocument.ts';
+import ownerWindow from './ownerWindow.ts';
+import parents from './parents.ts';
+import position from './position.ts';
+import prepend from './prepend.ts';
+import querySelectorAll from './querySelectorAll.ts';
+import remove from './remove.ts';
+import removeClass from './removeClass.ts';
+import removeEventListener from './removeEventListener.ts';
+import scrollbarSize from './scrollbarSize.ts';
+import scrollLeft from './scrollLeft.ts';
+import scrollParent from './scrollParent.ts';
+import scrollTo from './scrollTo.ts';
+import scrollTop from './scrollTop.ts';
+import siblings from './siblings.ts';
+import text from './text.ts';
+import toggleClass from './toggleClass.ts';
+import transitionEnd from './transitionEnd.ts';
+import triggerEvent from './triggerEvent.ts';
+import width from './width.ts';
 
 export {
   addEventListener,
@@ -92,7 +92,7 @@ export {
   prepend,
   remove,
   text,
-}
+};
 
 export default {
   addEventListener,
@@ -140,4 +140,4 @@ export default {
   prepend,
   remove,
   text,
-}
+};

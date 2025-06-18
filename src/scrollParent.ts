@@ -1,8 +1,8 @@
 /* eslint-disable no-cond-assign, no-continue */
 
-import css from './css'
-import height from './height'
-import isDocument from './isDocument'
+import css from './css.ts';
+import height from './height.ts';
+import isDocument from './isDocument.ts';
 
 /**
  * Find the first scrollable parent of an element.
@@ -10,33 +10,27 @@ import isDocument from './isDocument'
  * @param element Starting element
  * @param firstPossible Stop at the first scrollable parent, even if it's not currently scrollable
  */
-export default function scrollParent(
-  element: HTMLElement,
-  firstPossible?: boolean
-) {
-  const position = css(element, 'position')
-  const excludeStatic = position === 'absolute'
-  const ownerDoc = element.ownerDocument
+export default function scrollParent(element: HTMLElement, firstPossible?: boolean) {
+  const position = css(element, 'position');
+  const excludeStatic = position === 'absolute';
+  const ownerDoc = element.ownerDocument;
 
-  if (position === 'fixed') return ownerDoc || document
+  if (position === 'fixed') return ownerDoc || document;
 
   // @ts-ignore
   while ((element = element.parentNode) && !isDocument(element)) {
-    const isStatic = excludeStatic && css(element, 'position') === 'static'
+    const isStatic = excludeStatic && css(element, 'position') === 'static';
     const style =
       (css(element, 'overflow') || '') +
       (css(element, 'overflow-y') || '') +
-      css(element, 'overflow-x')
+      css(element, 'overflow-x');
 
-    if (isStatic) continue
+    if (isStatic) continue;
 
-    if (
-      /(auto|scroll)/.test(style) &&
-      (firstPossible || height(element) < element!.scrollHeight)
-    ) {
-      return element
+    if (/(auto|scroll)/.test(style) && (firstPossible || height(element) < element!.scrollHeight)) {
+      return element;
     }
   }
 
-  return ownerDoc || document
+  return ownerDoc || document;
 }

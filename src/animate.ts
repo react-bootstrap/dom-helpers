@@ -1,29 +1,29 @@
-import { EventHandler } from './addEventListener'
-import css from './css'
-import hyphenate from './hyphenate'
-import isTransform, { TransformValue } from './isTransform'
-import transitionEnd from './transitionEnd'
-import { Property } from './types'
+import { EventHandler } from './addEventListener.ts';
+import css from './css.ts';
+import hyphenate from './hyphenate.ts';
+import isTransform, { TransformValue } from './isTransform.ts';
+import transitionEnd from './transitionEnd.ts';
+import { Property } from './types.ts';
 
 const reset: Partial<Record<Property, string>> = {
   transition: '',
   'transition-duration': '',
   'transition-delay': '',
   'transition-timing-function': '',
-}
+};
 
-type AnimateProperties = Record<Property | TransformValue, string>
+type AnimateProperties = Record<Property | TransformValue, string>;
 
 interface Options {
-  node: HTMLElement
-  properties: AnimateProperties
-  duration?: number
-  easing?: string
-  callback?: EventHandler<'transitionend'>
+  node: HTMLElement;
+  properties: AnimateProperties;
+  duration?: number;
+  easing?: string;
+  callback?: EventHandler<'transitionend'>;
 }
 
 interface Cancel {
-  cancel(): void
+  cancel(): void;
 }
 
 // super lean animate function for transitions
@@ -31,82 +31,72 @@ interface Cancel {
 /**
  * code in part from: Zepto 1.1.4 | zeptojs.com/license
  */
-function _animate({
-  node,
-  properties,
-  duration = 200,
-  easing,
-  callback,
-}: Options) {
-  const cssProperties = [] as Property[]
+function _animate({ node, properties, duration = 200, easing, callback }: Options) {
+  const cssProperties = [] as Property[];
 
-  const cssValues: Partial<Record<Property, string>> = {}
+  const cssValues: Partial<Record<Property, string>> = {};
 
-  let transforms = ''
+  let transforms = '';
 
   Object.keys(properties).forEach((key: Property) => {
-    const value = properties[key]
+    const value = properties[key];
 
-    if (isTransform(key)) transforms += `${key}(${value}) `
+    if (isTransform(key)) transforms += `${key}(${value}) `;
     else {
-      cssValues[key] = value
-      cssProperties.push(hyphenate(key) as Property)
+      cssValues[key] = value;
+      cssProperties.push(hyphenate(key) as Property);
     }
-  })
+  });
 
   if (transforms) {
-    cssValues.transform = transforms
-    cssProperties.push('transform')
+    cssValues.transform = transforms;
+    cssProperties.push('transform');
   }
 
   function done(this: HTMLElement, event: TransitionEvent) {
-    if (event.target !== event.currentTarget) return
+    if (event.target !== event.currentTarget) return;
 
-    css(node, reset)
-    if (callback) callback.call(this, event)
+    css(node, reset);
+    if (callback) callback.call(this, event);
   }
 
   if (duration > 0) {
-    cssValues.transition = cssProperties.join(', ')
-    cssValues['transition-duration'] = `${duration / 1000}s`
-    cssValues['transition-delay'] = '0s'
-    cssValues['transition-timing-function'] = easing || 'linear'
+    cssValues.transition = cssProperties.join(', ');
+    cssValues['transition-duration'] = `${duration / 1000}s`;
+    cssValues['transition-delay'] = '0s';
+    cssValues['transition-timing-function'] = easing || 'linear';
   }
 
-  const removeListener = transitionEnd(node, done, duration)
+  const removeListener = transitionEnd(node, done, duration);
 
   // eslint-disable-next-line no-unused-expressions
-  node.clientLeft // trigger page reflow
+  node.clientLeft; // trigger page reflow
 
-  css(node, cssValues)
+  css(node, cssValues);
 
   return {
     cancel() {
-      removeListener()
-      css(node, reset)
+      removeListener();
+      css(node, reset);
     },
-  }
+  };
 }
 
-function animate(options: Options): Cancel
-function animate(
-  node: HTMLElement,
-  properties: AnimateProperties,
-  duration: number
-): Cancel
+function animate(options: Options): Cancel;
+function animate(node: HTMLElement, properties: AnimateProperties, duration: number): Cancel;
 function animate(
   node: HTMLElement,
   properties: AnimateProperties,
   duration: number,
   callback: EventHandler<'transitionend'>
-): Cancel
+): Cancel;
 function animate(
   node: HTMLElement,
   properties: AnimateProperties,
   duration: number,
   easing: string,
   callback: EventHandler<'transitionend'>
-): Cancel
+): Cancel;
 function animate(
   nodeOrOptions: HTMLElement | Options,
   properties?: AnimateProperties,
@@ -115,15 +105,15 @@ function animate(
   callback?: EventHandler<'transitionend'>
 ) {
   if (!('nodeType' in nodeOrOptions)) {
-    return _animate(nodeOrOptions)
+    return _animate(nodeOrOptions);
   }
 
   if (!properties) {
-    throw new Error('must include properties to animate')
+    throw new Error('must include properties to animate');
   }
   if (typeof easing === 'function') {
-    callback = easing
-    easing = ''
+    callback = easing;
+    easing = '';
   }
 
   return _animate({
@@ -132,7 +122,7 @@ function animate(
     duration,
     easing,
     callback,
-  })
+  });
 }
 
-export default animate
+export default animate;

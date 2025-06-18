@@ -1,4 +1,5 @@
-const supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i
+const supportedTransforms =
+  /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
 
 export type TransformValue =
   | 'translate'
@@ -21,8 +22,8 @@ export type TransformValue =
   | 'perspective'
   | 'skew'
   | 'skewY'
-  | 'skewX'
+  | 'skewX';
 
 export default function isTransform(value: string): value is TransformValue {
-  return !!(value && supportedTransforms.test(value))
+  return !!(value && supportedTransforms.test(value));
 }

@@ -1,5 +1,5 @@
-import addEventListener, { EventHandler } from './addEventListener'
-import removeEventListener from './removeEventListener'
+import addEventListener, { EventHandler } from './addEventListener.ts';
+import removeEventListener from './removeEventListener.ts';
 
 function listen<K extends keyof HTMLElementEventMap>(
   node: HTMLElement,
@@ -7,10 +7,10 @@ function listen<K extends keyof HTMLElementEventMap>(
   handler: EventHandler<K>,
   options?: boolean | AddEventListenerOptions
 ) {
-  addEventListener(node, eventName, handler, options)
+  addEventListener(node, eventName, handler, options);
   return () => {
-    removeEventListener(node, eventName, handler, options)
-  }
+    removeEventListener(node, eventName, handler, options);
+  };
 }
 
-export default listen
+export default listen;

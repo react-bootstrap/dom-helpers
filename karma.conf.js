@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-module.exports = config => {
-  const { env } = process
+module.exports = (config) => {
+  const { env } = process;
 
   config.set({
     basePath: '',
@@ -55,5 +55,5 @@ module.exports = config => {
     webpackServer: {
       noInfo: true,
     },
-  })
-}
+  });
+};

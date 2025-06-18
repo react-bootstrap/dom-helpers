@@ -1,22 +1,22 @@
 /* eslint-disable no-return-assign */
-import canUseDOM from './canUseDOM'
+import canUseDOM from './canUseDOM.ts';
 
-export let optionsSupported = false
-export let onceSupported = false
+export let optionsSupported = false;
+export let onceSupported = false;
 
 try {
   const options = {
     get passive() {
-      return (optionsSupported = true)
+      return (optionsSupported = true);
     },
     get once() {
       // eslint-disable-next-line no-multi-assign
-      return (onceSupported = optionsSupported = true)
+      return (onceSupported = optionsSupported = true);
     },
-  }
+  };
   if (canUseDOM) {
-    window.addEventListener('test', options as any, options)
-    window.removeEventListener('test', options as any, true)
+    window.addEventListener('test', options as any, options);
+    window.removeEventListener('test', options as any, true);
   }
 } catch (e) {
   /* */
@@ -25,15 +25,15 @@ try {
 export type EventHandler<K extends keyof HTMLElementEventMap> = (
   this: HTMLElement,
   event: HTMLElementEventMap[K]
-) => any
+) => any;
 
-export type TaggedEventHandler<
-  K extends keyof HTMLElementEventMap
-> = EventHandler<K> & { __once?: EventHandler<K> }
+export type TaggedEventHandler<K extends keyof HTMLElementEventMap> = EventHandler<K> & {
+  __once?: EventHandler<K>;
+};
 
 /**
  * An `addEventListener` ponyfill, supports the `once` option
- * 
+ *
  * @param node the element
  * @param eventName the event name
  * @param handle the handler
@@ -46,26 +46,22 @@ function addEventListener<K extends keyof HTMLElementEventMap>(
   options?: boolean | AddEventListenerOptions
 ) {
   if (options && typeof options !== 'boolean' && !onceSupported) {
-    const { once, capture } = options
-    let wrappedHandler = handler
+    const { once, capture } = options;
+    let wrappedHandler = handler;
     if (!onceSupported && once) {
       wrappedHandler =
         handler.__once ||
         function onceHandler(event) {
-          this.removeEventListener(eventName, onceHandler, capture)
-          handler.call(this, event)
-        }
-      handler.__once = wrappedHandler
+          this.removeEventListener(eventName, onceHandler, capture);
+          handler.call(this, event);
+        };
+      handler.__once = wrappedHandler;
     }
 
-    node.addEventListener(
-      eventName,
-      wrappedHandler,
-      optionsSupported ? options : capture
-    )
+    node.addEventListener(eventName, wrappedHandler, optionsSupported ? options : capture);
   }
 
-  node.addEventListener(eventName, handler, options)
+  node.addEventListener(eventName, handler, options);
 }
 
-export default addEventListener
+export default addEventListener;
