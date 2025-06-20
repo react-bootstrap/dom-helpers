@@ -59,7 +59,7 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "build": "yarn build:cjs && yarn build:esm",
+    "build": "yarn build:cjs && yarn build:esm && node fix-dts.mjs",
     "build:cjs": "rimraf cjs && babel src --out-dir cjs --delete-dir-on-start --env-name cjs --extensions .ts && yarn build:cjs:types && echo '{\"type\": \"commonjs\"}' > cjs/package.json",
     "build:esm": "rimraf esm && babel src --out-dir esm --delete-dir-on-start --env-name esm --extensions .ts && yarn build:esm:types && echo '{\"type\": \"module\"}' > esm/package.json",
     "build:cjs:types": "tsc --emitDeclarationOnly --module commonjs --outDir cjs",
@@ -94,6 +94,7 @@
     "eslint-plugin-mocha": "^8.1.0",
     "eslint-plugin-react": "^7.23.2",
     "expect.js": "^0.3.1",
+    "glob": "^11.0.3",
     "jquery": "^3.7.1",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
