@@ -1,6 +1,6 @@
 {
   "name": "dom-helpers",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "tiny modular DOM lib for ie9+",
   "author": {
     "name": "Jason Quense",

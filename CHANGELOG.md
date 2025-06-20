@@ -1,3 +1,14 @@
+## [6.0.1](https://github.com/react-bootstrap/dom-helpers/compare/v6.0.0...v6.0.1) (2025-06-20)
+
+
+### Bug Fixes
+
+* fix import extensions in dts files ([ca51d93](https://github.com/react-bootstrap/dom-helpers/commit/ca51d93220df38e2d9ee949c31507a201f75d226))
+
+
+
+
+
 # [6.0.0](https://github.com/react-bootstrap/dom-helpers/compare/v5.2.1...v6.0.0) (2025-06-20)
 
 
