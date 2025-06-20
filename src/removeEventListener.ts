@@ -1,8 +1,8 @@
-import { TaggedEventHandler } from './addEventListener'
+import { TaggedEventHandler } from './addEventListener.ts';
 
 /**
  * A `removeEventListener` ponyfill
- * 
+ *
  * @param node the element
  * @param eventName the event name
  * @param handle the handler
@@ -15,13 +15,12 @@ function removeEventListener<K extends keyof HTMLElementEventMap>(
   handler: TaggedEventHandler<K>,
   options?: boolean | EventListenerOptions
 ) {
-  const capture =
-    options && typeof options !== 'boolean' ? options.capture : options
+  const capture = options && typeof options !== 'boolean' ? options.capture : options;
 
-  node.removeEventListener(eventName, handler, capture)
+  node.removeEventListener(eventName, handler, capture);
   if (handler.__once) {
-    node.removeEventListener(eventName, handler.__once, capture)
+    node.removeEventListener(eventName, handler.__once, capture);
   }
 }
 
-export default removeEventListener
+export default removeEventListener;

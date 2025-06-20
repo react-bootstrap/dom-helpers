@@ -1,40 +1,36 @@
-import css from './css'
-import listen from './listen'
-import triggerEvent from './triggerEvent';
+import css from './css.ts';
+import listen from './listen.ts';
+import triggerEvent from './triggerEvent.ts';
 
-export type Listener = (this: HTMLElement, ev: TransitionEvent) => any
+export type Listener = (this: HTMLElement, ev: TransitionEvent) => any;
 
 function parseDuration(node: HTMLElement) {
-  const str = css(node, 'transitionDuration') || ''
+  const str = css(node, 'transitionDuration') || '';
 
-  const mult = str.indexOf('ms') === -1 ? 1000 : 1
-  return parseFloat(str) * mult
+  const mult = str.indexOf('ms') === -1 ? 1000 : 1;
+  return parseFloat(str) * mult;
 }
 
-function emulateTransitionEnd(
-  element: HTMLElement,
-  duration: number,
-  padding = 5
-) {
-  let called = false
+function emulateTransitionEnd(element: HTMLElement, duration: number, padding = 5) {
+  let called = false;
 
   const handle = setTimeout(() => {
     if (!called) triggerEvent(element, 'transitionend', true);
-  }, duration + padding)
+  }, duration + padding);
 
   const remove = listen(
     element,
     'transitionend',
     () => {
-      called = true
+      called = true;
     },
     { once: true }
-  )
+  );
 
   return () => {
-    clearTimeout(handle)
-    remove()
-  }
+    clearTimeout(handle);
+    remove();
+  };
 }
 
 export default function transitionEnd(
@@ -43,13 +39,13 @@ export default function transitionEnd(
   duration?: number | null,
   padding?: number
 ) {
-  if (duration == null) duration = parseDuration(element) || 0
-  const removeEmulate = emulateTransitionEnd(element, duration, padding)
+  if (duration == null) duration = parseDuration(element) || 0;
+  const removeEmulate = emulateTransitionEnd(element, duration, padding);
 
-  const remove = listen(element, 'transitionend', handler)
+  const remove = listen(element, 'transitionend', handler);
 
   return () => {
-    removeEmulate()
-    remove()
-  }
+    removeEmulate();
+    remove();
+  };
 }

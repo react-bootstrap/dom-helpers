@@ -1,12 +1,12 @@
-import matches from './matches';
+import matches from './matches.ts';
 
 export default function collectSiblings(
   node: Element | null,
   refNode: Element | null = null,
   selector: string | null = null
-) : Element[] {
+): Element[] {
   const siblings: Element[] = [];
-  
+
   for (; node; node = node.nextElementSibling) {
     if (node !== refNode) {
       if (selector && matches(node, selector)) {
@@ -15,6 +15,6 @@ export default function collectSiblings(
       siblings.push(node);
     }
   }
-  
+
   return siblings;
 }
