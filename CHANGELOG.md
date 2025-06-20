@@ -1,3 +1,17 @@
+# [6.0.0](https://github.com/react-bootstrap/dom-helpers/compare/v5.2.1...v6.0.0) (2025-06-20)
+
+
+* feat!: update deps and add export map (#188) ([e3c5dd8](https://github.com/react-bootstrap/dom-helpers/commit/e3c5dd82d05ccc143fadb00dd22630e3c1d8f180)), closes [#188](https://github.com/react-bootstrap/dom-helpers/issues/188)
+
+
+### BREAKING CHANGES
+
+* Add export map and full ESM support
+
+
+
+
+
 ## [5.2.1](https://github.com/react-bootstrap/dom-helpers/compare/v5.2.0...v5.2.1) (2021-04-26)
 
 
