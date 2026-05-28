@@ -86,7 +86,7 @@
     "@react-bootstrap/eslint-config-typescript": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
-    "babel-eslint": "^10.1.0",
+    "@babel/eslint-parser": "^7.11.0",
     "babel-loader": "^10.0.0",
     "eslint": "^7.25.0",
     "eslint-plugin-import": "^2.22.1",
