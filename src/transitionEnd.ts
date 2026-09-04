@@ -18,14 +18,9 @@ function emulateTransitionEnd(element: HTMLElement, duration: number, padding = 
     if (!called) triggerEvent(element, 'transitionend', true);
   }, duration + padding);
 
-  const remove = listen(
-    element,
-    'transitionend',
-    () => {
-      called = true;
-    },
-    { once: true }
-  );
+  const remove = listen(element, 'transitionend', (e) => {
+    if (e.target === element) called = true;
+  });
 
   return () => {
     clearTimeout(handle);

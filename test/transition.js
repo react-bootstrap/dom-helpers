@@ -35,4 +35,20 @@ describe('transitionEnd', () => {
     clock.tick(200)
     expect(handler2.callCount).to.equal(1)
   })
+
+  it('should still emulate transitionend when only a child fires the event', () => {
+    const el = document.createElement('div')
+    const child = document.createElement('span')
+    el.appendChild(child)
+    el.style.transitionDuration = '500ms'
+
+    const handler = sinon.spy()
+    transitionEnd(el, handler)
+
+    child.dispatchEvent(new Event('transitionend', { bubbles: true }))
+    clock.tick(600)
+
+    const ownEvents = handler.getCalls().filter((call) => call.args[0].target === el)
+    expect(ownEvents.length).to.equal(1)
+  })
 })
