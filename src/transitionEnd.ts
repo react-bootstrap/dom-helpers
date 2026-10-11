@@ -5,7 +5,7 @@ import triggerEvent from './triggerEvent.ts';
 export type Listener = (this: HTMLElement, ev: TransitionEvent) => any;
 
 function parseDuration(node: HTMLElement) {
-  const str = css(node, 'transitionDuration') || '';
+  const str = (css(node, 'transitionDuration') || '').split(',')[0];
 
   const mult = str.indexOf('ms') === -1 ? 1000 : 1;
   return parseFloat(str) * mult;
