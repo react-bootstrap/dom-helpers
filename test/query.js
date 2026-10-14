@@ -86,6 +86,48 @@ describe('Query helpers', () => {
       expect(query.scrollParent(child)).to.be.equal(parent)
     })
 
+    it('should find a parent that only scrolls horizontally', () => {
+      const parent = document.createElement('div'),
+        child = document.createElement('div')
+
+      parent.style.cssText = 'width: 100px; height: 100px; overflow-x: auto; overflow-y: hidden;'
+      child.style.cssText = 'width: 200px; height: 20px;'
+      parent.appendChild(child)
+      document.body.appendChild(parent)
+
+      expect(parent.scrollWidth > parent.getBoundingClientRect().width).to.be.equal(true)
+      expect(parent.scrollHeight <= parent.getBoundingClientRect().height).to.be.equal(true)
+      expect(query.scrollParent(child)).to.be.equal(parent)
+    })
+
+    it('should skip a non-overflowing parent unless firstPossible is set', () => {
+      const parent = document.createElement('div'),
+        child = document.createElement('div')
+
+      parent.style.cssText = 'width: 100px; height: 100px; overflow: auto;'
+      child.style.cssText = 'width: 20px; height: 20px;'
+      parent.appendChild(child)
+      document.body.appendChild(parent)
+
+      expect(query.scrollParent(child)).to.be.equal(document)
+      expect(query.scrollParent(child, true)).to.be.equal(parent)
+    })
+
+    it('should skip static horizontal scroll parents for absolute elements', () => {
+      const parent = document.createElement('div'),
+        inner = document.createElement('div'),
+        child = document.createElement('div')
+
+      parent.style.cssText = 'position: relative; width: 100px; height: 100px; overflow-x: auto;'
+      inner.style.cssText = 'width: 200px; height: 50px; overflow-x: auto;'
+      child.style.cssText = 'position: absolute; width: 300px; height: 20px;'
+      inner.appendChild(child)
+      parent.appendChild(inner)
+      document.body.appendChild(parent)
+
+      expect(query.scrollParent(child)).to.be.equal(parent)
+    })
+
     it('should handle fixed', () => {
       const child = document.getElementById('scroll-child-fixed')
 
