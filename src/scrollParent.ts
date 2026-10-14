@@ -2,6 +2,7 @@
 
 import css from './css.ts';
 import height from './height.ts';
+import width from './width.ts';
 import isDocument from './isDocument.ts';
 
 /**
@@ -27,7 +28,12 @@ export default function scrollParent(element: HTMLElement, firstPossible?: boole
 
     if (isStatic) continue;
 
-    if (/(auto|scroll)/.test(style) && (firstPossible || height(element) < element!.scrollHeight)) {
+    if (
+      /(auto|scroll)/.test(style) &&
+      (firstPossible ||
+        height(element) < element.scrollHeight ||
+        width(element) < element.scrollWidth)
+    ) {
       return element;
     }
   }
